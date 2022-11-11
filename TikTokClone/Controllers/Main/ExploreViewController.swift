@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ExploreViewController.swift
 //  TikTokClone
 //
 //  Created by Marko Antoljak on 11/11/22.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ExploreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
+        view.backgroundColor = .systemBackground
+    }
+    
 
 }
-
