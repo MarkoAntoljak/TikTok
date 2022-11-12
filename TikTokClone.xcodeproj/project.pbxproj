@@ -23,12 +23,13 @@
 		9DC2B747291EBED500FEB49B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B746291EBED500FEB49B /* SettingsViewController.swift */; };
 		9DC2B749291EBF0800FEB49B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */; };
 		9DC2B74B291EBF3B00FEB49B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */; };
-		9DC2B74D291EBF5C00FEB49B /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B74C291EBF5C00FEB49B /* APICaller.swift */; };
 		9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */; };
 		9DC2B751291EBF9B00FEB49B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B750291EBF9B00FEB49B /* DatabaseManager.swift */; };
 		9DC2B753291EBFA300FEB49B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B752291EBFA300FEB49B /* AuthManager.swift */; };
 		9DC2B755291EBFBA00FEB49B /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B754291EBFBA00FEB49B /* HapticsManager.swift */; };
 		9DC2B757291EC11800FEB49B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DC2B756291EC11800FEB49B /* GoogleService-Info.plist */; };
+		9DC2B75B291EDA4700FEB49B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B75A291EDA4700FEB49B /* Extensions.swift */; };
+		9DC2B760291EF29400FEB49B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B75F291EF29400FEB49B /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,12 +52,13 @@
 		9DC2B746291EBED500FEB49B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = TikTokClone/Controllers/Main/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		9DC2B74C291EBF5C00FEB49B /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		9DC2B750291EBF9B00FEB49B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		9DC2B752291EBFA300FEB49B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		9DC2B754291EBFBA00FEB49B /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		9DC2B756291EC11800FEB49B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9DC2B75A291EDA4700FEB49B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9DC2B75F291EF29400FEB49B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		E5404457E71C9ABFC33EA196 /* Pods-TikTokClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTokClone.debug.xcconfig"; path = "Target Support Files/Pods-TikTokClone/Pods-TikTokClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		9DC2B71A291EB8D700FEB49B /* TikTokClone */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B75E291EF28200FEB49B /* Models */,
 				9DC2B734291EBDC900FEB49B /* Managers */,
 				9DC2B733291EBDC600FEB49B /* ViewModels */,
 				9DC2B732291EBDC400FEB49B /* Views */,
@@ -127,6 +130,7 @@
 				9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */,
 				9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */,
 				9DC2B724291EB8D700FEB49B /* Assets.xcassets */,
+				9DC2B75A291EDA4700FEB49B /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -158,9 +162,8 @@
 		9DC2B734291EBDC900FEB49B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B74C291EBF5C00FEB49B /* APICaller.swift */,
-				9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */,
 				9DC2B750291EBF9B00FEB49B /* DatabaseManager.swift */,
+				9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */,
 				9DC2B752291EBFA300FEB49B /* AuthManager.swift */,
 				9DC2B754291EBFBA00FEB49B /* HapticsManager.swift */,
 			);
@@ -178,7 +181,7 @@
 		9DC2B736291EBE5500FEB49B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */,
+				9DC2B759291ED93F00FEB49B /* Home */,
 				9DC2B738291EBE7D00FEB49B /* ExploreViewController.swift */,
 				9DC2B73A291EBE8900FEB49B /* CameraViewController.swift */,
 				9DC2B73C291EBE9400FEB49B /* NotificationsViewController.swift */,
@@ -198,6 +201,22 @@
 				9DC2B746291EBED500FEB49B /* SettingsViewController.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		9DC2B759291ED93F00FEB49B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9DC2B75E291EF28200FEB49B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B75F291EF29400FEB49B /* PostModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,10 +355,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC2B755291EBFBA00FEB49B /* HapticsManager.swift in Sources */,
+				9DC2B75B291EDA4700FEB49B /* Extensions.swift in Sources */,
 				9DC2B739291EBE7D00FEB49B /* ExploreViewController.swift in Sources */,
 				9DC2B741291EBEBA00FEB49B /* UserListViewController.swift in Sources */,
 				9DC2B747291EBED500FEB49B /* SettingsViewController.swift in Sources */,
-				9DC2B74D291EBF5C00FEB49B /* APICaller.swift in Sources */,
 				9DC2B751291EBF9B00FEB49B /* DatabaseManager.swift in Sources */,
 				9DC2B74B291EBF3B00FEB49B /* PostViewController.swift in Sources */,
 				9DC2B73B291EBE8900FEB49B /* CameraViewController.swift in Sources */,
@@ -353,6 +372,7 @@
 				9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */,
 				9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */,
 				9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */,
+				9DC2B760291EF29400FEB49B /* PostModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

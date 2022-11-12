@@ -27,6 +27,10 @@ class TabBarViewController: UITabBarController {
         let notifications = UINavigationController(rootViewController: NotificationsViewController())
         let profile = UINavigationController(rootViewController: ProfileViewController())
         
+        home.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        home.navigationBar.shadowImage = UIImage()
+        home.navigationBar.backgroundColor = .clear
+        
         home.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
         explore.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "star"), tag: 2)
         camera.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "camera"), tag: 3)
