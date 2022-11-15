@@ -30,6 +30,17 @@
 		9DC2B757291EC11800FEB49B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DC2B756291EC11800FEB49B /* GoogleService-Info.plist */; };
 		9DC2B75B291EDA4700FEB49B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B75A291EDA4700FEB49B /* Extensions.swift */; };
 		9DC2B760291EF29400FEB49B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B75F291EF29400FEB49B /* PostModel.swift */; };
+		9DC2B7622921805A00FEB49B /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7612921805A00FEB49B /* CommentViewController.swift */; };
+		9DC2B7642921892300FEB49B /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7632921892300FEB49B /* CommentModel.swift */; };
+		9DC2B7662921898C00FEB49B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7652921898C00FEB49B /* UserModel.swift */; };
+		9DC2B76929218EF900FEB49B /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */; };
+		9DC2B76E2922C0A200FEB49B /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9DC2B76D2922C0A200FEB49B /* testVideo.mp4 */; };
+		9DC2B7752922D1DF00FEB49B /* ExploreSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7742922D1DF00FEB49B /* ExploreSectionModel.swift */; };
+		9DC2B7772922D57600FEB49B /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */; };
+		9DC2B7792922DE9600FEB49B /* ExploreLayoutCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7782922DE9600FEB49B /* ExploreLayoutCollectionView.swift */; };
+		9DC2B77F2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */; };
+		9DC2B7812922F73700FEB49B /* ExplorePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7802922F73700FEB49B /* ExplorePostCollectionViewCell.swift */; };
+		9DC2B7852922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +61,7 @@
 		9DC2B742291EBEC000FEB49B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DC2B744291EBEC600FEB49B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9DC2B746291EBED500FEB49B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = TikTokClone/Controllers/Main/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "TikTokClone/Controllers/Main/Tab Bar/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		9DC2B750291EBF9B00FEB49B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -59,6 +70,17 @@
 		9DC2B756291EC11800FEB49B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DC2B75A291EDA4700FEB49B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9DC2B75F291EF29400FEB49B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		9DC2B7612921805A00FEB49B /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		9DC2B7632921892300FEB49B /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		9DC2B7652921898C00FEB49B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		9DC2B76D2922C0A200FEB49B /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
+		9DC2B7742922D1DF00FEB49B /* ExploreSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSectionModel.swift; sourceTree = "<group>"; };
+		9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		9DC2B7782922DE9600FEB49B /* ExploreLayoutCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreLayoutCollectionView.swift; sourceTree = "<group>"; };
+		9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DC2B7802922F73700FEB49B /* ExplorePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5404457E71C9ABFC33EA196 /* Pods-TikTokClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTokClone.debug.xcconfig"; path = "Target Support Files/Pods-TikTokClone/Pods-TikTokClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,8 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B75E291EF28200FEB49B /* Models */,
-				9DC2B734291EBDC900FEB49B /* Managers */,
 				9DC2B733291EBDC600FEB49B /* ViewModels */,
+				9DC2B734291EBDC900FEB49B /* Managers */,
 				9DC2B732291EBDC400FEB49B /* Views */,
 				9DC2B731291EBDC100FEB49B /* Controllers */,
 				9DC2B72F291EBD7E00FEB49B /* Resources */,
@@ -130,6 +152,7 @@
 				9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */,
 				9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */,
 				9DC2B724291EB8D700FEB49B /* Assets.xcassets */,
+				9DC2B76D2922C0A200FEB49B /* testVideo.mp4 */,
 				9DC2B75A291EDA4700FEB49B /* Extensions.swift */,
 			);
 			path = Resources;
@@ -147,6 +170,7 @@
 		9DC2B732291EBDC400FEB49B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B76729218ED100FEB49B /* Cells */,
 				9DC2B735291EBDE800FEB49B /* LaunchScreen */,
 			);
 			path = Views;
@@ -155,6 +179,7 @@
 		9DC2B733291EBDC600FEB49B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -181,12 +206,12 @@
 		9DC2B736291EBE5500FEB49B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B77D2922E30E00FEB49B /* Profile */,
+				9DC2B77C2922E30C00FEB49B /* Tab Bar */,
+				9DC2B77B2922E30900FEB49B /* Activity */,
+				9DC2B77A2922E30600FEB49B /* Camera */,
+				9DC2B7732922D1C100FEB49B /* Explore */,
 				9DC2B759291ED93F00FEB49B /* Home */,
-				9DC2B738291EBE7D00FEB49B /* ExploreViewController.swift */,
-				9DC2B73A291EBE8900FEB49B /* CameraViewController.swift */,
-				9DC2B73C291EBE9400FEB49B /* NotificationsViewController.swift */,
-				9DC2B73E291EBE9C00FEB49B /* ProfileViewController.swift */,
-				9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -199,6 +224,7 @@
 				9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */,
 				9DC2B740291EBEBA00FEB49B /* UserListViewController.swift */,
 				9DC2B746291EBED500FEB49B /* SettingsViewController.swift */,
+				9DC2B7612921805A00FEB49B /* CommentViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -215,8 +241,63 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B75F291EF29400FEB49B /* PostModel.swift */,
+				9DC2B7632921892300FEB49B /* CommentModel.swift */,
+				9DC2B7652921898C00FEB49B /* UserModel.swift */,
+				9DC2B7742922D1DF00FEB49B /* ExploreSectionModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9DC2B76729218ED100FEB49B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */,
+				9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */,
+				9DC2B7802922F73700FEB49B /* ExplorePostCollectionViewCell.swift */,
+				9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9DC2B7732922D1C100FEB49B /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B738291EBE7D00FEB49B /* ExploreViewController.swift */,
+				9DC2B7782922DE9600FEB49B /* ExploreLayoutCollectionView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		9DC2B77A2922E30600FEB49B /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B73A291EBE8900FEB49B /* CameraViewController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		9DC2B77B2922E30900FEB49B /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B73C291EBE9400FEB49B /* NotificationsViewController.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		9DC2B77C2922E30C00FEB49B /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */,
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		9DC2B77D2922E30E00FEB49B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B73E291EBE9C00FEB49B /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC2B76E2922C0A200FEB49B /* testVideo.mp4 in Resources */,
 				9DC2B728291EB8D700FEB49B /* LaunchScreen.storyboard in Resources */,
 				9DC2B725291EB8D700FEB49B /* Assets.xcassets in Resources */,
 				9DC2B757291EC11800FEB49B /* GoogleService-Info.plist in Resources */,
@@ -354,22 +436,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC2B7622921805A00FEB49B /* CommentViewController.swift in Sources */,
 				9DC2B755291EBFBA00FEB49B /* HapticsManager.swift in Sources */,
+				9DC2B7812922F73700FEB49B /* ExplorePostCollectionViewCell.swift in Sources */,
+				9DC2B77F2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift in Sources */,
 				9DC2B75B291EDA4700FEB49B /* Extensions.swift in Sources */,
+				9DC2B76929218EF900FEB49B /* CommentTableViewCell.swift in Sources */,
 				9DC2B739291EBE7D00FEB49B /* ExploreViewController.swift in Sources */,
+				9DC2B7642921892300FEB49B /* CommentModel.swift in Sources */,
 				9DC2B741291EBEBA00FEB49B /* UserListViewController.swift in Sources */,
 				9DC2B747291EBED500FEB49B /* SettingsViewController.swift in Sources */,
 				9DC2B751291EBF9B00FEB49B /* DatabaseManager.swift in Sources */,
+				9DC2B7792922DE9600FEB49B /* ExploreLayoutCollectionView.swift in Sources */,
 				9DC2B74B291EBF3B00FEB49B /* PostViewController.swift in Sources */,
 				9DC2B73B291EBE8900FEB49B /* CameraViewController.swift in Sources */,
+				9DC2B7752922D1DF00FEB49B /* ExploreSectionModel.swift in Sources */,
+				9DC2B7662921898C00FEB49B /* UserModel.swift in Sources */,
 				9DC2B753291EBFA300FEB49B /* AuthManager.swift in Sources */,
 				9DC2B749291EBF0800FEB49B /* TabBarViewController.swift in Sources */,
 				9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */,
 				9DC2B745291EBEC600FEB49B /* SignUpViewController.swift in Sources */,
+				9DC2B7852922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift in Sources */,
 				9DC2B73D291EBE9400FEB49B /* NotificationsViewController.swift in Sources */,
 				9DC2B743291EBEC000FEB49B /* SignInViewController.swift in Sources */,
 				9DC2B73F291EBE9C00FEB49B /* ProfileViewController.swift in Sources */,
 				9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */,
+				9DC2B7772922D57600FEB49B /* ExploreViewModel.swift in Sources */,
 				9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */,
 				9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */,
 				9DC2B760291EF29400FEB49B /* PostModel.swift in Sources */,

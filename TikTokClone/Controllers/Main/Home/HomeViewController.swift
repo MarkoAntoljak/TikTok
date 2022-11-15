@@ -55,6 +55,7 @@ class HomeViewController: UIViewController {
         scrollView.bounces = false
         scrollView.backgroundColor = .systemBackground
         scrollView.isPagingEnabled = true
+        scrollView.isUserInteractionEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
@@ -66,11 +67,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // view background
         view.backgroundColor = .systemBackground
         
+        // set page controllers
         followingPageViewController.didMove(toParent: self)
         forYouPageViewController.didMove(toParent: self)
         horizontalScrollView.delegate = self
+        
+        // navigation title
         navigationItem.titleView = control
         control.addTarget(self, action: #selector(didChangeHeader(_:)) , for: .touchUpInside)
         
@@ -143,7 +148,7 @@ class HomeViewController: UIViewController {
         inputViewController?.addChild(forYouPageViewController)
         
     }
-    
+        
     
     // MARK: Button Actions
     
@@ -153,11 +158,9 @@ class HomeViewController: UIViewController {
         horizontalScrollView.setContentOffset(CGPoint(
             x: view.width * CGFloat(sender.selectedSegmentIndex),
             y: 0), animated: true)
+        
     }
-    
-    
-    
-    
+        
 }
 
 // MARK: UIPageViewControllerDataSource
@@ -226,5 +229,6 @@ extension HomeViewController: UIScrollViewDelegate {
         
     }
 }
+
 
 
