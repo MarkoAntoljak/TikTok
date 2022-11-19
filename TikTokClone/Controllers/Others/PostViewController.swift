@@ -8,6 +8,12 @@
 import UIKit
 import AVFoundation
 
+protocol PostViewControllerDelegate: AnyObject {
+    
+    func postViewControllerDelegateDidTapProfile(model: PostModel, vc: PostViewController)
+    
+}
+
 class PostViewController: UIViewController {
     
     // MARK: Attributes
@@ -17,6 +23,8 @@ class PostViewController: UIViewController {
     private var player: AVPlayer?
     
     private var isVideoFinished: NSObjectProtocol?
+    
+    weak var delegate: PostViewControllerDelegate?
     
     // MARK: UI Elements
     
@@ -193,12 +201,7 @@ class PostViewController: UIViewController {
     @objc
     private func didTapProfile() {
         
-        let vc = ProfileViewController(user: model.user)
-        
-        DispatchQueue.main.async {
-         
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        delegate?.postViewControllerDelegateDidTapProfile(model: model, vc: self)
         
     }
     
@@ -240,7 +243,6 @@ class PostViewController: UIViewController {
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
         
         present(vc, animated: true)
-        
         
     }
     

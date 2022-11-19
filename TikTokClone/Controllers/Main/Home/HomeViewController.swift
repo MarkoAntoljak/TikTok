@@ -20,10 +20,14 @@ class HomeViewController: UIViewController {
         
         // user is on Following feed
         if horizontalScrollView.contentOffset.x == 0 {
+            
             return followingPosts
+            
         }
+        
         // user is on For You feed
         return forYouPosts
+        
     }
     
     // MARK: UI Elements
@@ -128,7 +132,10 @@ class HomeViewController: UIViewController {
         
         guard let model = followingPosts.first else {return}
         
-        followingPageViewController.setViewControllers([PostViewController(model: model)], direction: .forward, animated: false)
+        let vc = PostViewController(model: model)
+        vc.delegate = self
+        
+        followingPageViewController.setViewControllers([vc], direction: .forward, animated: false)
         followingPageViewController.dataSource = self
         
         horizontalScrollView.addSubview(followingPageViewController.view)
@@ -141,12 +148,16 @@ class HomeViewController: UIViewController {
         
         guard let model = forYouPosts.first else {return}
         
-        forYouPageViewController.setViewControllers([PostViewController(model: model)], direction: .forward, animated: false)
+        let vc = PostViewController(model: model)
+        vc.delegate = self
+        
+        forYouPageViewController.setViewControllers([vc], direction: .forward, animated: false)
         forYouPageViewController.dataSource = self
+        
         
         horizontalScrollView.addSubview(forYouPageViewController.view)
         inputViewController?.addChild(forYouPageViewController)
-        
+
     }
         
     
@@ -222,7 +233,6 @@ extension HomeViewController: UIScrollViewDelegate {
             
         } else if scrollView.contentOffset.x > (view.width / 2) {
             
-            
             control.selectedSegmentIndex = 1
             
         }
@@ -230,5 +240,15 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
-
+extension HomeViewController: PostViewControllerDelegate {
+    
+    // did tap on profile icon
+    func postViewControllerDelegateDidTapProfile(model: PostModel, vc: PostViewController) {
+        
+        let vc = ProfileViewController(user: model.user)        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+}
 

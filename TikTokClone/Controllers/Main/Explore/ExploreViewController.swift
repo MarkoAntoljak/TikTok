@@ -36,6 +36,8 @@ class ExploreViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        ExploreManager.shared.delegate = self
+        
         configureModels()
         
         setUpSearchbar()
@@ -82,7 +84,7 @@ class ExploreViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(ExplorePostCollectionViewCell.self, forCellWithReuseIdentifier: ExplorePostCollectionViewCell.identifier)
+        collectionView.register(ExploreUserCollectionViewCell.self, forCellWithReuseIdentifier: ExploreUserCollectionViewCell.identifier)
         collectionView.register(ExploreHashtagCollectionViewCell.self, forCellWithReuseIdentifier: ExploreHashtagCollectionViewCell.identifier)
         collectionView.register(ExploreFeaturedCollectionViewCell.self, forCellWithReuseIdentifier: ExploreFeaturedCollectionViewCell.identifier)
         
@@ -121,37 +123,30 @@ class ExploreViewController: UIViewController {
     
     private func configureModels() {
         
-        var cellsFeatured = [ExploreCell]()
-        var cellsPost = [ExploreCell]()
-        var cellsHashtags = [ExploreCell]()
-        
-        for _ in 0...10 {
-            
-            // add mock data
-            let cellFeatured = ExploreCell.featured(viewModel: ExploreFeaturedViewModel(image: UIImage(named: "test"), title: "Title", handler: {}))
-            let cellPost = ExploreCell.post(viewModel: ExplorePostViewModel(caption: "Awesome!!", image: UIImage(named: "test"), handler: {}))
-            let cellHashtag = ExploreCell.hashtags(viewModel: ExploreHashtagViewModel(text: "#love", icon: UIImage(systemName: "heart.fill"), count: 2, handler: {}))
-            
-            // append
-            cellsFeatured.append(cellFeatured)
-            cellsPost.append(cellPost)
-            cellsHashtags.append(cellHashtag)
-        }
-        
         // Featured
-        sections.append(ExploreSectionModel(type: .featured, cells: cellsFeatured))
+        sections.append(ExploreSectionModel(type: .featured, cells: ExploreManager.shared.getExploreFeatured().compactMap({ viewModel in
+            return ExploreCell.featured(viewModel: viewModel)
+        })))
         
         // Creators
-        sections.append(ExploreSectionModel(type: .creators, cells: cellsPost))
+        sections.append(ExploreSectionModel(type: .creators, cells: ExploreManager.shared.getExploreCreators().compactMap({ viewModel in
+            return ExploreCell.user(viewModel: viewModel)
+        })))
         
         // Hashtags
-        sections.append(ExploreSectionModel(type: .hashtags, cells: cellsHashtags))
+        sections.append(ExploreSectionModel(type: .hashtags, cells: ExploreManager.shared.getExploreHashtags().compactMap({ viewModel in
+            return ExploreCell.hashtags(viewModel: viewModel)
+        })))
         
         // Recommended
-        sections.append(ExploreSectionModel(type: .recommended, cells: cellsPost))
+        sections.append(ExploreSectionModel(type: .recommended, cells: ExploreManager.shared.getExploreRecommended().compactMap({ viewModel in
+            return ExploreCell.user(viewModel: viewModel)
+        })))
         
         // Recent
-        sections.append(ExploreSectionModel(type: .recent, cells: cellsFeatured))
+        sections.append(ExploreSectionModel(type: .recent, cells: ExploreManager.shared.getExploreRecent().compactMap({ viewModel in
+            return ExploreCell.featured(viewModel: viewModel)
+        })))
         
     }
     
@@ -171,6 +166,31 @@ class ExploreViewController: UIViewController {
 
 extension ExploreViewController: UISearchBarDelegate {
     
+    // user begins to type in the search bar
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        // add cancel button to reset search bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(didTapCancel))
+        
+    }
+    
+    // reseting search bar
+    @objc private func didTapCancel() {
+        
+        navigationItem.rightBarButtonItem = nil
+        
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        
+    }
+    
+    // when user press search
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        
+    }
+    
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
@@ -179,20 +199,39 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     // selection of item in collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        
         collectionView.deselectItem(at: indexPath, animated: true)
         HapticsManager.shared.vibrateForSelection()
+        
+        let model = sections[indexPath.section].cells[indexPath.row]
+        
+        switch model {
+            
+        case .featured(viewModel: let viewModel):
+            viewModel.handler()
+            
+        case .hashtags(viewModel: let viewModel):
+            viewModel.handler()
+            
+        case .user(viewModel: let viewModel):
+            viewModel.handler()
+            
+        }
         
     }
     
     // number of sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return sections.count
+        
     }
     
     // number of items in section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return sections[section].cells.count
+        
     }
     
     // configuring each cell on a collection view
@@ -230,9 +269,10 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             return cell
             
-        case .post(viewModel: let viewModel):
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExplorePostCollectionViewCell.identifier, for: indexPath) as? ExplorePostCollectionViewCell else {
+        case .user(viewModel: let viewModel):
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExploreUserCollectionViewCell.identifier, for: indexPath) as? ExploreUserCollectionViewCell else {
                 
                 return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
                 
@@ -242,8 +282,21 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             return cell
         }
-    
+        
     }
     
+    
+}
+
+// MARK: ExploreManagerDelegate
+
+// pushing vc for depending on the selected row in section
+extension ExploreViewController: ExploreManagerDelegate {
+    
+    func pushViewController(vc: UIViewController) {
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
 }

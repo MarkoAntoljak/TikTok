@@ -17,6 +17,10 @@ class ExploreLayoutCollectionView: UICollectionViewController {
 
     // MARK: Functions
     
+    // Explore Sections Styling
+    
+    // FEATURED
+    
     func getFeaturedLayout() -> NSCollectionLayoutSection {
         
         //create section layout
@@ -43,6 +47,8 @@ class ExploreLayoutCollectionView: UICollectionViewController {
         // return
         return section
     }
+    
+    // CREATORS
     
     func getCreatorsLayout() -> NSCollectionLayoutSection {
         //create section layout
@@ -76,6 +82,9 @@ class ExploreLayoutCollectionView: UICollectionViewController {
         return section
     }
     
+    
+    // HASHTAGS
+    
     func getHashtagLayout() -> NSCollectionLayoutSection {
         //create section layout
         // item
@@ -100,6 +109,9 @@ class ExploreLayoutCollectionView: UICollectionViewController {
         // return
         return section
     }
+    
+    
+    // RECOMMENDED
     
     func getRecommendedLayout() -> NSCollectionLayoutSection {
         //create section layout
@@ -127,4 +139,5 @@ class ExploreLayoutCollectionView: UICollectionViewController {
         return section
     }
 
+    // !!! RECENT SECTION USES THE SAME LAYOUT AS FEATURED !!!
 }

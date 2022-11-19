@@ -39,8 +39,11 @@
 		9DC2B7772922D57600FEB49B /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */; };
 		9DC2B7792922DE9600FEB49B /* ExploreLayoutCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7782922DE9600FEB49B /* ExploreLayoutCollectionView.swift */; };
 		9DC2B77F2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */; };
-		9DC2B7812922F73700FEB49B /* ExplorePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7802922F73700FEB49B /* ExplorePostCollectionViewCell.swift */; };
+		9DC2B7812922F73700FEB49B /* ExploreUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7802922F73700FEB49B /* ExploreUserCollectionViewCell.swift */; };
 		9DC2B7852922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */; };
+		9DC2B78C292428F600FEB49B /* ExploreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B78B292428F600FEB49B /* ExploreManager.swift */; };
+		9DC2B7902926B68900FEB49B /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DC2B78F2926B68900FEB49B /* Data.json */; };
+		9DC2B7972926F27500FEB49B /* TikTokTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B7962926F27500FEB49B /* TikTokTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,8 +82,11 @@
 		9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		9DC2B7782922DE9600FEB49B /* ExploreLayoutCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreLayoutCollectionView.swift; sourceTree = "<group>"; };
 		9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
-		9DC2B7802922F73700FEB49B /* ExplorePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DC2B7802922F73700FEB49B /* ExploreUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DC2B78B292428F600FEB49B /* ExploreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreManager.swift; sourceTree = "<group>"; };
+		9DC2B78F2926B68900FEB49B /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
+		9DC2B7962926F27500FEB49B /* TikTokTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokTextField.swift; sourceTree = "<group>"; };
 		E5404457E71C9ABFC33EA196 /* Pods-TikTokClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTokClone.debug.xcconfig"; path = "Target Support Files/Pods-TikTokClone/Pods-TikTokClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +154,8 @@
 		9DC2B72F291EBD7E00FEB49B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B7952926F26000FEB49B /* Custom UI classes */,
+				9DC2B7862924220300FEB49B /* Data */,
 				9DC2B756291EC11800FEB49B /* GoogleService-Info.plist */,
 				9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */,
 				9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */,
@@ -187,10 +195,11 @@
 		9DC2B734291EBDC900FEB49B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B752291EBFA300FEB49B /* AuthManager.swift */,
 				9DC2B750291EBF9B00FEB49B /* DatabaseManager.swift */,
 				9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */,
-				9DC2B752291EBFA300FEB49B /* AuthManager.swift */,
 				9DC2B754291EBFBA00FEB49B /* HapticsManager.swift */,
+				9DC2B78B292428F600FEB49B /* ExploreManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -219,8 +228,7 @@
 		9DC2B737291EBE6B00FEB49B /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B742291EBEC000FEB49B /* SignInViewController.swift */,
-				9DC2B744291EBEC600FEB49B /* SignUpViewController.swift */,
+				9DC2B7912926BA9D00FEB49B /* Authentication */,
 				9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */,
 				9DC2B740291EBEBA00FEB49B /* UserListViewController.swift */,
 				9DC2B746291EBED500FEB49B /* SettingsViewController.swift */,
@@ -253,7 +261,7 @@
 			children = (
 				9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */,
 				9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */,
-				9DC2B7802922F73700FEB49B /* ExplorePostCollectionViewCell.swift */,
+				9DC2B7802922F73700FEB49B /* ExploreUserCollectionViewCell.swift */,
 				9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -298,6 +306,31 @@
 				9DC2B73E291EBE9C00FEB49B /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		9DC2B7862924220300FEB49B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B78F2926B68900FEB49B /* Data.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9DC2B7912926BA9D00FEB49B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B742291EBEC000FEB49B /* SignInViewController.swift */,
+				9DC2B744291EBEC600FEB49B /* SignUpViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		9DC2B7952926F26000FEB49B /* Custom UI classes */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B7962926F27500FEB49B /* TikTokTextField.swift */,
+			);
+			path = "Custom UI classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +396,7 @@
 			files = (
 				9DC2B76E2922C0A200FEB49B /* testVideo.mp4 in Resources */,
 				9DC2B728291EB8D700FEB49B /* LaunchScreen.storyboard in Resources */,
+				9DC2B7902926B68900FEB49B /* Data.json in Resources */,
 				9DC2B725291EB8D700FEB49B /* Assets.xcassets in Resources */,
 				9DC2B757291EC11800FEB49B /* GoogleService-Info.plist in Resources */,
 			);
@@ -438,7 +472,7 @@
 			files = (
 				9DC2B7622921805A00FEB49B /* CommentViewController.swift in Sources */,
 				9DC2B755291EBFBA00FEB49B /* HapticsManager.swift in Sources */,
-				9DC2B7812922F73700FEB49B /* ExplorePostCollectionViewCell.swift in Sources */,
+				9DC2B7812922F73700FEB49B /* ExploreUserCollectionViewCell.swift in Sources */,
 				9DC2B77F2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift in Sources */,
 				9DC2B75B291EDA4700FEB49B /* Extensions.swift in Sources */,
 				9DC2B76929218EF900FEB49B /* CommentTableViewCell.swift in Sources */,
@@ -463,8 +497,10 @@
 				9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */,
 				9DC2B7772922D57600FEB49B /* ExploreViewModel.swift in Sources */,
 				9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */,
+				9DC2B78C292428F600FEB49B /* ExploreManager.swift in Sources */,
 				9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */,
 				9DC2B760291EF29400FEB49B /* PostModel.swift in Sources */,
+				9DC2B7972926F27500FEB49B /* TikTokTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

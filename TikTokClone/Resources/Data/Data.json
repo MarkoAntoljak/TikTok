@@ -1,0 +1,158 @@
+{
+  "featured": [
+    {
+      "id": "1234",
+      "caption": "Kim Kardashian",
+      "image": "imageKim",
+      "action": "user"
+    },
+    {
+      "id": "12345",
+      "caption": "Kanye West",
+      "image": "imageKanye",
+      "action": "user"
+    },
+    {
+      "id": "123456",
+      "caption": "Travis Scott",
+      "image": "imageTravis",
+      "action": "user"
+    },
+    {
+      "id": "1234567",
+      "caption": "New York",
+      "image": "imageNY",
+      "action": "post"
+    },
+    {
+      "id": "12345678",
+      "caption": "Tokyo",
+      "image": "imageTokyo",
+      "action": "post"
+    }
+  ],
+  "creators": [
+    {
+      "id": "1",
+      "profilePicture": "image1",
+      "username": "Mikela",
+      "followerCount": 2000000
+    },
+    {
+      "id": "2",
+      "profilePicture": "image2",
+      "username": "Jonathan",
+      "followerCount": 3452621
+    },
+    {
+      "id": "3",
+      "profilePicture": "image3",
+      "username": "Rima",
+      "followerCount": 46374
+    },
+    {
+      "id": "4",
+      "profilePicture": "image4",
+      "username": "Badoo",
+      "followerCount": 34422
+    },
+    {
+      "id": "5",
+      "profilePicture": "image5",
+      "username": "Reese",
+      "followerCount": 9084764
+    },
+    {
+      "id": "6",
+      "profilePicture": "image6",
+      "username": "Patrick",
+      "followerCount": 100000
+    }
+  ],
+  "hashtags" : [
+    {
+        "id": "1",
+        "text" : "#love",
+        "count" : 12300
+    },
+    {
+        "id": "2",
+        "text" : "#new",
+        "count" : 12300
+    },
+    {
+        "id": "3",
+        "text" : "#celeb",
+        "count" : 12300
+    },
+    {
+        "id": "4",
+        "text" : "#cozy",
+        "count" : 12300
+    },
+    {
+        "id": "5",
+        "text" : "#fun",
+        "count" : 12300
+    }
+  ],
+  "recommended" : [
+      {
+        "id": "1",
+        "profilePicture": "image7",
+        "username": "Marina",
+        "followerCount": 2829
+      },
+      {
+        "id": "2",
+        "profilePicture": "image8",
+        "username": "Stephen",
+        "followerCount": 4576
+      },
+      {
+        "id": "3",
+        "profilePicture": "image9",
+        "username": "John",
+        "followerCount": 324
+      },
+      {
+        "id": "4",
+        "profilePicture": "image10",
+        "username": "Steph",
+        "followerCount": 789
+      },
+      {
+        "id": "5",
+        "profilePicture": "image11",
+        "username": "Ryan",
+        "followerCount": 16
+      }
+  ],
+  "recent" : [
+      {
+        "id": "1",
+        "caption": "Coffee",
+        "image": "imageCoffee",
+        "action": "post"
+      },
+      {
+        "id": "2",
+        "caption": "Los Angeles",
+        "image": "imageLA",
+        "action": "post"
+      },
+      {
+        "id": "3",
+        "caption": "Dua Lipa",
+        "image": "imageDuaLipa",
+        "action": "user"
+      },
+      {
+        "id": "4",
+        "caption": "Kittens",
+        "image": "imageCats",
+        "action": "post"
+      }
+  ]
+}
+

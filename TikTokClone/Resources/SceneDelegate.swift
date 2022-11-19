@@ -10,7 +10,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    static let shared = SceneDelegate()
+    
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -19,9 +21,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = TabBarViewController()
-        
         self.window = window
+        
+        if AuthManager.shared.isSignedIn {
+            
+            window.rootViewController = TabBarViewController()
+            
+        } else {
+            
+            let navController = UINavigationController(rootViewController: SignInViewController())
+            
+            window.rootViewController = navController
+            
+            
+
+        }
         
         window.makeKeyAndVisible()
         

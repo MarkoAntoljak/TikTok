@@ -8,18 +8,10 @@
 import Foundation
 import UIKit
 
-struct ExplorePostViewModel {
-    
-    let caption: String?
-    
-    let image: UIImage?
-    
-    let handler: (() -> Void)
-}
 
 struct ExploreUserViewModel {
     
-    let profilePicURL: URL?
+    let profilePic: UIImage?
     
     let username: String
     
@@ -43,7 +35,7 @@ struct ExploreFeaturedViewModel {
     
     let image: UIImage?
     
-    let title: String
+    let caption: String
     
     let handler: (() -> Void)
 }

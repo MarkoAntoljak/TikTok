@@ -81,7 +81,7 @@ class ExploreFeaturedCollectionViewCell: UICollectionViewCell {
         
         imageView.image = viewModel.image
         
-        label.text = viewModel.title
+        label.text = viewModel.caption
     }
 
 

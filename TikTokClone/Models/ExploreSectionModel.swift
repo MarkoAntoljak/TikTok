@@ -53,6 +53,6 @@ enum ExploreCell {
     
     case hashtags(viewModel: ExploreHashtagViewModel)
     
-    case post(viewModel: ExplorePostViewModel)
+    case user(viewModel: ExploreUserViewModel)
     
 }
