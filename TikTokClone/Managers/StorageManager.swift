@@ -26,9 +26,25 @@ final class StorageManager {
 
     
     // uploading videos to storage
-    public func uploadVideoURL(from url: URL) {
+    public func uploadVideoURL(from url: URL, fileName: String, caption: String, completion: @escaping (Bool) -> Void) {
         
+        guard let username = UserDefaults.standard.string(forKey: "username") else {return}
+    
+        storage.child("videos/\(username)/\(fileName)").putFile(from: url) { _, error in
+            
+            completion(error == nil)
+            
+        }
+    }
+    
+    public func generateVideoName() -> String {
         
+        guard let username = UserDefaults.standard.string(forKey: "username") else {return ""}
+        
+        let uuidString = UUID().uuidString
+        let timePosted = Date()
+        
+        return "\(uuidString)_\(username)_\(timePosted).mp4"
         
     }
     

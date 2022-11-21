@@ -27,7 +27,7 @@ class CommentTableViewCell: UITableViewCell {
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         label.font = .systemFont(ofSize: 10)
         return label
     }()
@@ -35,7 +35,7 @@ class CommentTableViewCell: UITableViewCell {
     private lazy var commentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .label
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()

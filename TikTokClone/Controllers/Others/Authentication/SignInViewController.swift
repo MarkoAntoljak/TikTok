@@ -158,6 +158,8 @@ class SignInViewController: UIViewController {
     private func didTapSignUp() {
         
         let vc = SignUpViewController()
+        
+        // if user registers present home screen
         vc.completion = { [weak self] in
                     
                     DispatchQueue.main.async {
@@ -166,6 +168,7 @@ class SignInViewController: UIViewController {
                         self?.present(vc, animated: true)
                     }
                 }
+    
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -258,7 +261,15 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            if textField == tfEmail {
+                tfPassword.becomeFirstResponder()
+            } else {
+                textField.resignFirstResponder()
+                didTapSignIn()
+            }
+            return true
+        }
 }
 
 

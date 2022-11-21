@@ -31,8 +31,46 @@ final class DatabaseManager {
             "password" : password
         ]
         
-        database.collection("users").document("\(username)").setData(userData)
+        database.collection("users").document("\(username)").setData(userData) { error in
+            
+            completion(error == nil)
+        }
         
+    }
+    
+    public func insertVideo(fileName: String, caption: String, completion: @escaping (Bool) -> Void) {
+        
+        guard let username = UserDefaults.standard.string(forKey: "username") else {return}
+        
+        let currentDate = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
+        
+        let postData: [String: Any] = [
+            "postURL" : fileName,
+            "caption" : caption
+        ]
+        
+        database.collection("users").document("\(username)").collection("posts").document(currentDate).setData(postData) { error in
+            
+            completion(error == nil)
+        }
+        
+        
+    }
+    
+    public func fetchNotifications(completion: @escaping ([NotificationModel]) -> Void) {
+        
+        let notifications = NotificationModel.mockData()
+        
+        completion(notifications)
+    }
+    
+    public func removenotification(notificationID: String, completion: @escaping (Bool) -> Void) {
+        
+        completion(true)
+    }
+    
+    public func follow(username: String, completion: @escaping (Bool) -> Void) {
+     
         completion(true)
     }
     

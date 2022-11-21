@@ -25,11 +25,27 @@ class TabBarViewController: UITabBarController {
         let explore = UINavigationController(rootViewController: ExploreViewController())
         let camera = UINavigationController(rootViewController: CameraViewController())
         let notifications = UINavigationController(rootViewController: NotificationsViewController())
-        let profile = UINavigationController(rootViewController: ProfileViewController(user: UserModel(username: "markoant123", profilePicURL: nil, identifier: "123")))
         
+        // set current user profile
+        let profile = UINavigationController(rootViewController: ProfileViewController(user: UserModel(
+            username: UserDefaults.standard.string(forKey: "username") ?? "no user",
+            profilePicURL: nil,
+            identifier: UserDefaults.standard.string(forKey: "username")?.lowercased() ?? "")))
+        
+        // home feed init setup
         home.navigationBar.setBackgroundImage(UIImage(), for: .default)
         home.navigationBar.shadowImage = UIImage()
         home.navigationBar.backgroundColor = .clear
+        
+        // camera screen init setup
+        camera.tabBarController?.tabBar.isHidden = true
+        camera.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        camera.navigationBar.shadowImage = UIImage()
+        camera.navigationBar.backgroundColor = .clear
+        
+        // explore init setup
+        explore.tabBarItem.title = "Activity"
+        
         
         home.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
         explore.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "star"), tag: 2)

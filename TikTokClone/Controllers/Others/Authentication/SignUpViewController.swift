@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import SnapKit
+import ProgressHUD
 
 class SignUpViewController: UIViewController {
     
     // MARK: Attributes
-
+    
     public var completion:(() -> Void)?
     
     // MARK: UI Elements
@@ -66,6 +68,8 @@ class SignUpViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         title = "Sign Up"
+        
+        // set delegates
         tfUsername.delegate = self
         tfEmail.delegate = self
         tfPassword.delegate = self
@@ -79,6 +83,7 @@ class SignUpViewController: UIViewController {
         
         setFrames()
     }
+    
     
     
     // MARK: Functions
@@ -132,6 +137,10 @@ class SignUpViewController: UIViewController {
     @objc
     private func didTapSignUp() {
         
+        tfUsername.resignFirstResponder()
+        tfEmail.resignFirstResponder()
+        tfPassword.resignFirstResponder()
+        
         signUp()
         
     }
@@ -139,10 +148,6 @@ class SignUpViewController: UIViewController {
     // MARK: Sign Up
     
     private func signUp() {
-        
-        tfUsername.resignFirstResponder()
-        tfEmail.resignFirstResponder()
-        tfPassword.resignFirstResponder()
         
         guard let username = tfUsername.text,
               let email = tfEmail.text,
@@ -162,34 +167,56 @@ class SignUpViewController: UIViewController {
             tfPassword.text = nil
             
             // show error to the user - wrong input
-            let alert = UIAlertController(title: "Oops...", message: "Wrong input, please check all fields again. Username should have at least 4 charaters, no whitespaces or dots. Email must be valid. Password should be at least 6 characters long.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-            present(alert, animated: true)
+            DispatchQueue.main.async {
+                
+                let alert = UIAlertController(title: "Oops...", message: "Wrong input, please check all fields again. Username should have at least 4 charaters, no whitespaces or dots. Email must be valid. Password should be at least 6 characters long.", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                self.present(alert, animated: true)
+                
+            }
+    
             return
         }
         
+        ProgressHUD.show("Signing up")
+        
         AuthManager.shared.signUp(username: username, email: email, password: password) { [weak self] signedUp in
             
-            
-                if signedUp {
+            if signedUp {
                 
-                    DispatchQueue.main.async {
-            
+                ProgressHUD.dismiss()
+                
+                UserDefaults.standard.set(username, forKey: "username")
+                UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set(password, forKey: "password")
+                
+                DispatchQueue.main.async {
+                    
+                    let alert = UIAlertController(title: "Congrats!", message: "You have been successfully signed up on TikTok.", preferredStyle: .alert)
+
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel,handler: { action in
+                        // if user signs up successfully show home screen, this is done on the sign in vc
                         self?.navigationController?.popViewController(animated: true)
                         self?.completion?()
-                    }
+                    }))
+                    self?.present(alert, animated: true)
                     
-                } else {
-                    // show error to the user - Firebase Auth
-                    DispatchQueue.main.async {
-                        
-                        let alert = UIAlertController(title: "Oops...", message: "Wrong input, please check all fields again.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Try again", style: .cancel))
-                        self?.present(alert, animated: true)
-                        return
-                    }
                 }
-        
+                
+            } else {
+                
+                ProgressHUD.dismiss()
+                // show error to the user - Firebase Auth
+                DispatchQueue.main.async {
+                    
+                    let alert = UIAlertController(title: "Oops...", message: "Wrong input, please check all fields again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Try again", style: .cancel))
+                    self?.present(alert, animated: true)
+                    return
+                }
+            }
+            
             
         }
     }
@@ -201,5 +228,23 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == tfUsername {
+            
+            tfEmail.becomeFirstResponder()
+            
+        } else if textField == tfEmail {
+            
+            tfPassword.becomeFirstResponder()
+            
+        } else {
+            
+            textField.resignFirstResponder()
+            
+            didTapSignIn()
+            
+        }
+        return true
+    }
 }

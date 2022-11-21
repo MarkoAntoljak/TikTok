@@ -80,9 +80,10 @@ final class AuthManager {
         
         do {
             
-            try Auth.auth().signOut()
+            try auth.signOut()
             
             completion(true)
+            
         } catch {
             print(error)
             print("Cannot Sign Out the user")

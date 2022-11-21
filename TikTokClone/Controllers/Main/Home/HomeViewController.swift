@@ -73,6 +73,7 @@ class HomeViewController: UIViewController {
         
         // view background
         view.backgroundColor = .systemBackground
+        navigationController?.tabBarController?.tabBar.backgroundColor = .black
         
         // set page controllers
         followingPageViewController.didMove(toParent: self)
@@ -82,6 +83,8 @@ class HomeViewController: UIViewController {
         // navigation title
         navigationItem.titleView = control
         control.addTarget(self, action: #selector(didChangeHeader(_:)) , for: .touchUpInside)
+        
+        
         
     }
     
@@ -245,8 +248,12 @@ extension HomeViewController: PostViewControllerDelegate {
     // did tap on profile icon
     func postViewControllerDelegateDidTapProfile(model: PostModel, vc: PostViewController) {
         
-        let vc = ProfileViewController(user: model.user)        
-        navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            
+            let vc = ProfileViewController(user: model.user)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
         
     }
     

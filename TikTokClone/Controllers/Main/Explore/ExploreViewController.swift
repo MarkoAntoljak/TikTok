@@ -12,11 +12,11 @@ class ExploreViewController: UIViewController {
     
     // MARK: Attributes
     
-    private var sections = [ExploreSectionModel]()
+    private lazy var sections = [ExploreSectionModel]()
     
     private var collectionView: UICollectionView?
     
-    private var exploreLayout = ExploreLayoutCollectionView.shared
+    private lazy var exploreLayout = ExploreLayoutCollectionView.shared
     
     // MARK: UI Elements
     

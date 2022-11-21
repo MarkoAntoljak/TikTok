@@ -24,6 +24,16 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .systemBackground
+        collection.showsVerticalScrollIndicator = false
+        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        return collection
+    }()
+    
     
     // MARK: Init
     
@@ -43,18 +53,28 @@ class ProfileViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         title = user.username.lowercased()
+        navigationController?.tabBarItem.title = "Profile"
         
         view.addSubview(btnLogOut)
         
         print(user.username.lowercased())
         
         addActions()
+        
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
+    
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         setFrames()
+        
+        collectionView.frame = view.bounds
+     
         
     }
     
@@ -62,10 +82,10 @@ class ProfileViewController: UIViewController {
     
     private func setFrames() {
         
-        btnLogOut.sizeToFit()
-        btnLogOut.frame = CGRect(x: 0, y: 0, width: btnLogOut.width + 20, height: btnLogOut.height + 20)
+        
+        btnLogOut.frame = CGRect(x: 0, y: 0, width: 280, height: 50)
         btnLogOut.center.x = view.center.x
-        btnLogOut.center.y = view.center.y
+        btnLogOut.center.y = view.bottom - 150
         
     }
     
@@ -119,9 +139,50 @@ class ProfileViewController: UIViewController {
     }
     
     
+}
+
+// MARK: Delegates
+
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // number of sections
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        
+        cell.backgroundColor = .red
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width: CGFloat = (view.width - 12) / 3
+        return CGSize(width: width, height: width * 1.8)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
     
     
 }
+

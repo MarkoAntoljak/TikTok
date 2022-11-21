@@ -210,46 +210,48 @@ class PostViewController: UIViewController {
         
         model.isLikedByCurrentUser = !model.isLikedByCurrentUser
         
-        if model.isLikedByCurrentUser {
+        DispatchQueue.main.async {
             
-            likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
-            likeButton.tintColor = .systemRed
-            
-        } else {
-            
-            likeButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
-            likeButton.tintColor = .white
-            
+            if self.model.isLikedByCurrentUser {
+                
+                self.likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+                self.likeButton.tintColor = .systemRed
+                
+            } else {
+                
+                self.likeButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+                self.likeButton.tintColor = .white
+            }
         }
-        
-        
     }
+    
     
     @objc
     private func didTapComment() {
         
         // add comment vc
-        let vc = CommentViewController(post: model)
-    
-        present(vc, animated: true)
+        DispatchQueue.main.async {
+            
+            let vc = CommentViewController(post: self.model)
+            self.present(vc, animated: true)
+        }
         
     }
     
     @objc
     private func didTapShare() {
         
-        guard let url = URL(string: "https://www.tiktok.com" ) else {return}
-        
-        let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
-        
-        present(vc, animated: true)
+        DispatchQueue.main.async {
+            guard let url = URL(string: "https://www.tiktok.com" ) else {return}
+            let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
+            self.present(vc, animated: true)
+        }
         
     }
     
     @objc
     private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         
-        // double tap handling
         if !model.isLikedByCurrentUser {
             model.isLikedByCurrentUser = true
         }
@@ -257,8 +259,11 @@ class PostViewController: UIViewController {
         // make herat button icon sync with double tap
         if model.isLikedByCurrentUser {
             
-            likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
-            likeButton.tintColor = .systemRed
+            DispatchQueue.main.async {
+                
+                self.likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+                self.likeButton.tintColor = .systemRed
+            }
             
         }
         
@@ -267,7 +272,9 @@ class PostViewController: UIViewController {
         
         heartImage.center = touchPoint
         
-        heartAnimation()
+        DispatchQueue.main.async {
+            self.heartAnimation()
+        }
         
         
     }

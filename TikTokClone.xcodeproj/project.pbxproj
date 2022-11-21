@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4CA7CEA6CC99989231EC0B18 /* Pods_TikTokClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0209A29E7E3827DA92AAA2 /* Pods_TikTokClone.framework */; };
+		9D2F85CF29296C930044E735 /* TikTokRecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85CE29296C930044E735 /* TikTokRecordingButton.swift */; };
+		9D2F85D1292983830044E735 /* RecordingCaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85D0292983830044E735 /* RecordingCaptionViewController.swift */; };
+		9D2F85D3292AC8A80044E735 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85D2292AC8A80044E735 /* NotificationModel.swift */; };
+		9D2F85D9292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85D8292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift */; };
+		9D2F85DB292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85DA292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift */; };
+		9D2F85DD292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85DC292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift */; };
 		9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */; };
 		9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */; };
 		9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */; };
@@ -20,7 +26,6 @@
 		9DC2B741291EBEBA00FEB49B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B740291EBEBA00FEB49B /* UserListViewController.swift */; };
 		9DC2B743291EBEC000FEB49B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B742291EBEC000FEB49B /* SignInViewController.swift */; };
 		9DC2B745291EBEC600FEB49B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B744291EBEC600FEB49B /* SignUpViewController.swift */; };
-		9DC2B747291EBED500FEB49B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B746291EBED500FEB49B /* SettingsViewController.swift */; };
 		9DC2B749291EBF0800FEB49B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */; };
 		9DC2B74B291EBF3B00FEB49B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */; };
 		9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */; };
@@ -49,6 +54,12 @@
 /* Begin PBXFileReference section */
 		0C96F8C0A8905A1F33DF9361 /* Pods-TikTokClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTokClone.release.xcconfig"; path = "Target Support Files/Pods-TikTokClone/Pods-TikTokClone.release.xcconfig"; sourceTree = "<group>"; };
 		2D0209A29E7E3827DA92AAA2 /* Pods_TikTokClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TikTokClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D2F85CE29296C930044E735 /* TikTokRecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokRecordingButton.swift; sourceTree = "<group>"; };
+		9D2F85D0292983830044E735 /* RecordingCaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingCaptionViewController.swift; sourceTree = "<group>"; };
+		9D2F85D2292AC8A80044E735 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		9D2F85D8292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPostLikeTableViewCell.swift; sourceTree = "<group>"; };
+		9D2F85DA292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPostCommentTableViewCell.swift; sourceTree = "<group>"; };
+		9D2F85DC292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUserFollowTableViewCell.swift; sourceTree = "<group>"; };
 		9DC2B718291EB8D700FEB49B /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +74,6 @@
 		9DC2B740291EBEBA00FEB49B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		9DC2B742291EBEC000FEB49B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DC2B744291EBEC600FEB49B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9DC2B746291EBED500FEB49B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9DC2B748291EBF0800FEB49B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "TikTokClone/Controllers/Main/Tab Bar/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		9DC2B74E291EBF7F00FEB49B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -119,6 +129,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9D2F85D4292ACDA50044E735 /* Explore Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */,
+				9DC2B7802922F73700FEB49B /* ExploreUserCollectionViewCell.swift */,
+				9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */,
+			);
+			path = "Explore Cells";
+			sourceTree = "<group>";
+		};
+		9D2F85D6292ACDB20044E735 /* Comment Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */,
+			);
+			path = "Comment Cells";
+			sourceTree = "<group>";
+		};
+		9D2F85D7292ACDBE0044E735 /* Notification Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9D2F85D8292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift */,
+				9D2F85DA292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift */,
+				9D2F85DC292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift */,
+			);
+			path = "Notification Cells";
+			sourceTree = "<group>";
+		};
 		9DC2B70F291EB8D700FEB49B = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +192,6 @@
 		9DC2B72F291EBD7E00FEB49B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B7952926F26000FEB49B /* Custom UI classes */,
 				9DC2B7862924220300FEB49B /* Data */,
 				9DC2B756291EC11800FEB49B /* GoogleService-Info.plist */,
 				9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */,
@@ -178,6 +215,7 @@
 		9DC2B732291EBDC400FEB49B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B7952926F26000FEB49B /* Custom UI classes */,
 				9DC2B76729218ED100FEB49B /* Cells */,
 				9DC2B735291EBDE800FEB49B /* LaunchScreen */,
 			);
@@ -215,12 +253,12 @@
 		9DC2B736291EBE5500FEB49B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B77D2922E30E00FEB49B /* Profile */,
 				9DC2B77C2922E30C00FEB49B /* Tab Bar */,
-				9DC2B77B2922E30900FEB49B /* Activity */,
-				9DC2B77A2922E30600FEB49B /* Camera */,
-				9DC2B7732922D1C100FEB49B /* Explore */,
 				9DC2B759291ED93F00FEB49B /* Home */,
+				9DC2B7732922D1C100FEB49B /* Explore */,
+				9DC2B77A2922E30600FEB49B /* Camera */,
+				9DC2B77B2922E30900FEB49B /* Activity */,
+				9DC2B77D2922E30E00FEB49B /* Profile */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -229,10 +267,9 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B7912926BA9D00FEB49B /* Authentication */,
-				9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */,
 				9DC2B740291EBEBA00FEB49B /* UserListViewController.swift */,
-				9DC2B746291EBED500FEB49B /* SettingsViewController.swift */,
 				9DC2B7612921805A00FEB49B /* CommentViewController.swift */,
+				9D2F85D0292983830044E735 /* RecordingCaptionViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -241,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */,
+				9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -252,6 +290,7 @@
 				9DC2B7632921892300FEB49B /* CommentModel.swift */,
 				9DC2B7652921898C00FEB49B /* UserModel.swift */,
 				9DC2B7742922D1DF00FEB49B /* ExploreSectionModel.swift */,
+				9D2F85D2292AC8A80044E735 /* NotificationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,10 +298,9 @@
 		9DC2B76729218ED100FEB49B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */,
-				9DC2B77E2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift */,
-				9DC2B7802922F73700FEB49B /* ExploreUserCollectionViewCell.swift */,
-				9DC2B7842922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift */,
+				9D2F85D7292ACDBE0044E735 /* Notification Cells */,
+				9D2F85D6292ACDB20044E735 /* Comment Cells */,
+				9D2F85D4292ACDA50044E735 /* Explore Cells */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -329,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B7962926F27500FEB49B /* TikTokTextField.swift */,
+				9D2F85CE29296C930044E735 /* TikTokRecordingButton.swift */,
 			);
 			path = "Custom UI classes";
 			sourceTree = "<group>";
@@ -475,18 +514,21 @@
 				9DC2B7812922F73700FEB49B /* ExploreUserCollectionViewCell.swift in Sources */,
 				9DC2B77F2922F72900FEB49B /* ExploreFeaturedCollectionViewCell.swift in Sources */,
 				9DC2B75B291EDA4700FEB49B /* Extensions.swift in Sources */,
+				9D2F85CF29296C930044E735 /* TikTokRecordingButton.swift in Sources */,
 				9DC2B76929218EF900FEB49B /* CommentTableViewCell.swift in Sources */,
 				9DC2B739291EBE7D00FEB49B /* ExploreViewController.swift in Sources */,
 				9DC2B7642921892300FEB49B /* CommentModel.swift in Sources */,
 				9DC2B741291EBEBA00FEB49B /* UserListViewController.swift in Sources */,
-				9DC2B747291EBED500FEB49B /* SettingsViewController.swift in Sources */,
+				9D2F85D9292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift in Sources */,
 				9DC2B751291EBF9B00FEB49B /* DatabaseManager.swift in Sources */,
 				9DC2B7792922DE9600FEB49B /* ExploreLayoutCollectionView.swift in Sources */,
 				9DC2B74B291EBF3B00FEB49B /* PostViewController.swift in Sources */,
 				9DC2B73B291EBE8900FEB49B /* CameraViewController.swift in Sources */,
 				9DC2B7752922D1DF00FEB49B /* ExploreSectionModel.swift in Sources */,
 				9DC2B7662921898C00FEB49B /* UserModel.swift in Sources */,
+				9D2F85D1292983830044E735 /* RecordingCaptionViewController.swift in Sources */,
 				9DC2B753291EBFA300FEB49B /* AuthManager.swift in Sources */,
+				9D2F85DB292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift in Sources */,
 				9DC2B749291EBF0800FEB49B /* TabBarViewController.swift in Sources */,
 				9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */,
 				9DC2B745291EBEC600FEB49B /* SignUpViewController.swift in Sources */,
@@ -499,7 +541,9 @@
 				9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */,
 				9DC2B78C292428F600FEB49B /* ExploreManager.swift in Sources */,
 				9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */,
+				9D2F85DD292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift in Sources */,
 				9DC2B760291EF29400FEB49B /* PostModel.swift in Sources */,
+				9D2F85D3292AC8A80044E735 /* NotificationModel.swift in Sources */,
 				9DC2B7972926F27500FEB49B /* TikTokTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
