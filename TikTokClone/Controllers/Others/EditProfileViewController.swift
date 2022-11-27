@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// editing profile view controller
 class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {

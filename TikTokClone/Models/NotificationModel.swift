@@ -26,15 +26,15 @@ class NotificationModel {
         self.type = type
     }
     
+    /// Mock data for notifications in activity tab
+    /// - Returns: array of notification models
     static func mockData() -> [NotificationModel] {
         
         var array = [NotificationModel]()
         
-        for _ in 0...20 {
-            array.append(NotificationModel(text: "Like", date: Date(), type: .postLike(postName: "idk")))
-            array.append(NotificationModel(text: "Comment", date: Date(), type: .postComment(postName: "idk")))
-            array.append(NotificationModel(text: "Follow", date: Date(), type: .userFollow(username: "tomis321")))
-        }
+        array.append(NotificationModel(text: "duaLipa has liked your post.", date: Date(), type: .postLike(postName: "myPost")))
+        array.append(NotificationModel(text: "travisssss has commented on your post.", date: Date(), type: .postComment(postName: "myPost")))
+        array.append(NotificationModel(text: "kimK has started following you.", date: Date(), type: .userFollow(username: "kimK")))
         
         return array
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// post comments view controler
 class CommentViewController: UIViewController {
     
     // MARK: Attributes
@@ -33,6 +34,7 @@ class CommentViewController: UIViewController {
 
     
     // MARK: Init
+    
     init(post: PostModel) {
         
         self.post = post
@@ -67,7 +69,6 @@ class CommentViewController: UIViewController {
     private func fetchPostComments() {
         
         comments = CommentModel.mockComments()
-        
     }
     
     private func setFrames() {
@@ -76,15 +77,11 @@ class CommentViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: navBar.height, width: view.width, height: view.height)
         
     }
- 
 }
-
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    // MARK: Functions
 
     // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,12 +109,10 @@ extension CommentViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    // row is selected
+    // selection  of row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
-    
-    
 }

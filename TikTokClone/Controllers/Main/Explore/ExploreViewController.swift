@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+/// explore section view controller
 class ExploreViewController: UIViewController {
     
     // MARK: Attributes
@@ -38,12 +38,10 @@ class ExploreViewController: UIViewController {
         
         ExploreManager.shared.delegate = self
         
+        // configuration
         configureModels()
-        
         setUpSearchbar()
-        
         setUpCollectionView()
-        
         
     }
     
@@ -62,6 +60,7 @@ class ExploreViewController: UIViewController {
         
     }
     
+    // setting up search bar
     private func setUpSearchbar() {
         
         navigationItem.titleView = searchBar
@@ -121,6 +120,7 @@ class ExploreViewController: UIViewController {
         
     }
     
+    // configuring each explore section
     private func configureModels() {
         
         // Featured
@@ -151,7 +151,6 @@ class ExploreViewController: UIViewController {
     }
     
     // end editing on tap anywhere on the screen
-    
     @objc
     private func endEditingOnTap() {
         
@@ -201,7 +200,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         collectionView.deselectItem(at: indexPath, animated: true)
-        HapticsManager.shared.vibrateForSelection()
         
         let model = sections[indexPath.section].cells[indexPath.row]
         
@@ -284,7 +282,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
     }
-    
     
 }
 

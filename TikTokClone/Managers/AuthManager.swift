@@ -8,31 +8,31 @@
 import Foundation
 import FirebaseAuth
 
+
+/// Manager responsible for User Authentication
 final class AuthManager {
     
     // MARK: Attributes
     
+    /// singleton
     public static let shared = AuthManager()
-    
+    /// auth init
     private let auth = Auth.auth()
     
     private init() {}
     
+    /// computed property that checks if current user is already logged in
     public var isSignedIn: Bool {
         return auth.currentUser != nil
     }
     
-    enum SignInMethod {
-        
-        case facebook
-        case google
-        case email
-        
-    }
-    
     // MARK: Functions
     
-    // Signing in the user
+    /// Signing in the user
+    /// - Parameters:
+    ///   - email: email of the user
+    ///   - password: password of the user
+    ///   - completion: completion handler sends back the email or error
     public func signIn(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         auth.signIn(withEmail: email, password: password) { result, error in
@@ -50,13 +50,20 @@ final class AuthManager {
         
     }
     
-    // Registering / Signing Up the user
+    
+    /// Registering the user in the database
+    /// - Parameters:
+    ///   - username: username of the user
+    ///   - email: email of the user
+    ///   - password: password of the user
+    ///   - completion: completion handler sends back boolean of success
     public func signUp(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         
         auth.createUser(withEmail: email, password: password) { result, error in
             
             guard result != nil, error == nil else {
-                print("cannot auth sign up")
+                
+                print("Error: Cannot register the user.")
                 completion(false)
                 return
             }
@@ -65,23 +72,25 @@ final class AuthManager {
             DatabaseManager.shared.insertUser(username: username, email: email, password: password) { success in
                 
                 completion(success == true)
+                
             }
         }
         
     }
     
-    // signing out the user
+    
+    /// Signing out the user
+    /// - Parameter completion: completion handler sends back boolean of success
     public func signOut(completion: @escaping (Bool) -> Void) {
         
         do {
             
             try auth.signOut()
-            
             completion(true)
             
         } catch {
-            print(error)
-            print("Cannot Sign Out the user")
+            
+            print(error.localizedDescription)
             completion(false)
         }
         

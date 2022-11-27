@@ -9,9 +9,8 @@ import UIKit
 import SafariServices
 import ProgressHUD
 
+/// sign in view controller
 class SignInViewController: UIViewController {
-    
-    // MARK: Attributes
     
     // MARK: UI Elements
     private lazy var titleImage: UIImageView = {
@@ -19,8 +18,7 @@ class SignInViewController: UIViewController {
         imageview.contentMode = .scaleAspectFit
         imageview.clipsToBounds = true
         imageview.backgroundColor = .white
-        imageview.layer.cornerRadius = 10
-        imageview.image = UIImage(named: "tiktok_text")
+        imageview.image = UIImage(named: "tiktok-header")
         return imageview
     }()
     
@@ -109,7 +107,6 @@ class SignInViewController: UIViewController {
     }
     
     private func setFrames() {
-        
         
         titleImage.frame = CGRect(x: 0, y: view.safeAreaInsets.bottom + 50, width: 300, height: 100)
         titleImage.center.x = view.center.x
@@ -268,12 +265,18 @@ class SignInViewController: UIViewController {
 extension SignInViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
             if textField == tfEmail {
+                
                 tfPassword.becomeFirstResponder()
+                
             } else {
+                
                 textField.resignFirstResponder()
                 didTapSignIn()
+                
             }
+        
             return true
         }
 }

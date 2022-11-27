@@ -8,6 +8,7 @@
 import UIKit
 import ProgressHUD
 
+/// profile view controller
 class ProfileViewController: UIViewController {
     
     // MARK: Attributes
@@ -28,6 +29,7 @@ class ProfileViewController: UIViewController {
             
             return user.username.lowercased() == username.lowercased()
         }
+        
         return false
     }
     
@@ -38,7 +40,6 @@ class ProfileViewController: UIViewController {
     
     // MARK: UI Elements
  
-    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -121,14 +122,13 @@ class ProfileViewController: UIViewController {
             
             self.present(alert, animated: true)
         }
-        
+
     }
     
     
     // MARK: Functions
     
-    
-    
+    /// logging out the user
     private func logOut() {
         
         AuthManager.shared.signOut { [weak self] success in
@@ -152,14 +152,12 @@ class ProfileViewController: UIViewController {
                 print("cannot sign out")
             }
         }
-        
-        
     }
-    
-    
 }
 
 // MARK: Delegates
+
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -210,7 +208,6 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     // line spacing
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
@@ -240,7 +237,6 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         DatabaseManager.shared.getFollows(for: user, type: .followers) { [weak self] followers in
             
             defer {
-                
                 group.leave()
             }
             
@@ -250,7 +246,6 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         DatabaseManager.shared.getFollows(for: user, type: .following) { [weak self] following in
             
             defer {
-                
                 group.leave()
             }
             
@@ -260,12 +255,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         DatabaseManager.shared.isValidRelationship(for: user, type: .followers) { [weak self] isFollower in
             
             defer {
-                
                 group.leave()
             }
             
             self?.isFollower = isFollower
-            
         }
         
         group.notify(queue: .main) {
@@ -288,11 +281,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.width, height: 300)
     }
-    
-    
 }
-
-
 
 // MARK: ProfileHeaderCollectionReusableViewDelegate
 
@@ -301,12 +290,9 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
     // did tap primary button
     func profileHeaderCollectionReusableViewDelegate(_ header: ProfileHeaderCollectionReusableView, didTapPrimaryButton viewModel: ProfileHeaderViewModel) {
         
-        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {return}
-        
         if isCurrentUser {
 
             // show edit profile, nothing to edit just a blank vc
-                
                 let vc = EditProfileViewController()
                 let navVC = UINavigationController(rootViewController: vc)
                 present(navVC, animated: true)
@@ -314,7 +300,6 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         } else {
             
             // show follow/unfollow button
-            
             if self.isFollower {
                 // unfollow
                 DatabaseManager.shared.updateRelationship(for: user, follow: false) { [weak self] success in
@@ -322,27 +307,27 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
                     DispatchQueue.main.async {
                         
                         if success {
-                            
+                            print("false")
                             self?.isFollower = false
                             self?.collectionView.reloadData()
                         }
                     }
-                    
                 }
                 
             } else {
                 // follow
-                DatabaseManager.shared.updateRelationship(for: user, follow: false) { [weak self] success in
+                DatabaseManager.shared.updateRelationship(for: user, follow: true) { [weak self] success in
                     
                     DispatchQueue.main.async {
                         
                         if success {
                             
-                            self?.isFollower = false
+                            print("true")
+                            
+                            self?.isFollower = true
                             self?.collectionView.reloadData()
                         }
                     }
-                    
                 }
             }
         }
@@ -377,18 +362,7 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
     // did tap profile image
     func profileHeaderCollectionReusableViewDelegate(_ header: ProfileHeaderCollectionReusableView, didTapProfileImage viewModel: ProfileHeaderViewModel) {
         
-        print(user.username.lowercased())
-        
-        guard let username = UserDefaults.standard.string(forKey: "username") else {
-            print("no username")
-            return
-        }
-        
-        
-        print(username.lowercased())
-        
         guard isCurrentUser else {
-            print("no current user")
             return
         }
         

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// notifications in activity view controller
 class NotificationsViewController: UIViewController {
     
     // MARK: Attributes
@@ -14,6 +15,7 @@ class NotificationsViewController: UIViewController {
     private lazy var notifications = [NotificationModel]()
     
     // MARK: UI Elements
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -146,7 +148,6 @@ class NotificationsViewController: UIViewController {
 
 // MARK: DELEGATES
 
-
 // MARK: UITableViewDelegate, UITableViewDataSource
 
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -253,9 +254,8 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         
     }
     
-    
-    
 }
+
 
 // MARK: NotificationsUserFollowTableViewCellDelegate
 
@@ -263,7 +263,15 @@ extension NotificationsViewController: NotificationsUserFollowTableViewCellDeleg
     
     func notificationsUserFollowTableViewCellDelegate(_ cell: NotificationsUserFollowTableViewCell, didTapFollowFor username: String) {
         
-        DatabaseManager.shared.follow(username: username) {alwaysTrue in} // this will always be true so no need to do anything
+        DatabaseManager.shared.updateRelationship(
+            for: UserModel(username: username, profilePicURL: nil, identifier: UUID().uuidString),
+            follow: true) { success in
+                
+            if !success {
+                
+                print("Error: Something went wrong.")
+            }
+        }
         
     }
     

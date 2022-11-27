@@ -8,12 +8,15 @@
 import UIKit
 import AVFoundation
 
+/// delegate for tapping on profile avatar
 protocol PostViewControllerDelegate: AnyObject {
     
     func postViewControllerDelegateDidTapProfile(model: PostModel, vc: PostViewController)
     
 }
 
+/// post view controller,
+/// view controller that is on top of home vc
 class PostViewController: UIViewController {
     
     // MARK: Attributes
@@ -218,7 +221,7 @@ class PostViewController: UIViewController {
         
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
     
     @objc
     private func didTapProfile() {
@@ -227,6 +230,7 @@ class PostViewController: UIViewController {
         
     }
     
+    // heart icon handling
     @objc
     private func didTapLike() {
         
@@ -247,7 +251,7 @@ class PostViewController: UIViewController {
         }
     }
     
-    
+    // comments
     @objc
     private func didTapComment() {
         
@@ -260,6 +264,7 @@ class PostViewController: UIViewController {
         
     }
     
+    // sharing
     @objc
     private func didTapShare() {
         
@@ -270,6 +275,7 @@ class PostViewController: UIViewController {
         }
         
     }
+    
     
     @objc
     private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
@@ -286,7 +292,6 @@ class PostViewController: UIViewController {
                 self.likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
                 self.likeButton.tintColor = .systemRed
             }
-            
         }
         
         // make image appear on tap loaction
@@ -297,8 +302,7 @@ class PostViewController: UIViewController {
         DispatchQueue.main.async {
             self.heartAnimation()
         }
-        
-        
+
     }
     
     // animation for heart when double tapped

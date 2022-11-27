@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// home feed view controller
 class HomeViewController: UIViewController {
     
     // MARK: Attributes

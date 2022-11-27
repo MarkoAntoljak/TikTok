@@ -9,14 +9,13 @@ import Foundation
 import UIKit
 
 
-// Creating computed variables for easier use
+/// extension of UIView class for simpler use
 extension UIView {
     
     var width: CGFloat {
         
         return frame.size.width
     }
-    
     
     var height: CGFloat {
         

@@ -14,4 +14,5 @@ struct UserModel: Codable {
     let profilePicURL: URL?
     
     let identifier: String
+    
 }

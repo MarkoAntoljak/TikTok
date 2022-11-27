@@ -28,6 +28,8 @@ class ProfilePostCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        //styling
         clipsToBounds = true
         contentView.addSubview(imageView)
         contentView.backgroundColor = .secondarySystemBackground
@@ -62,7 +64,8 @@ class ProfilePostCollectionViewCell: UICollectionViewCell {
                     
                 case .success(let url):
                 
-                    // setting image from storage downloaded url
+                    // setting image from video from storage downloaded url
+                    
                     let asset = AVAsset(url: url)
                     let generator = AVAssetImageGenerator(asset: asset)
                     
@@ -81,10 +84,5 @@ class ProfilePostCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
-    // MARK: Actions
-    
-    
-
     
 }

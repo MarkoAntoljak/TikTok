@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// user followers/following list view controller
 class UserListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Attributes
@@ -116,10 +118,7 @@ class UserListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
     }
-    
-
-    // MARK: Actions
-
 
 }

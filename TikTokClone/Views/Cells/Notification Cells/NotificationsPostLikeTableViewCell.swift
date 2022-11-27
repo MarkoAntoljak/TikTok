@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// delegate for notification post like cell
 protocol NotificationsPostLikeTableViewCellDelegate: AnyObject {
     
     func notificationsPostLikeTableViewCellDelegate(_ cell: NotificationsPostLikeTableViewCell, post: PostModel)
@@ -14,7 +15,6 @@ protocol NotificationsPostLikeTableViewCellDelegate: AnyObject {
 }
 
 class NotificationsPostLikeTableViewCell: UITableViewCell {
-
    
     // MARK: Attributes
     
@@ -38,6 +38,7 @@ class NotificationsPostLikeTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .label
+        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
@@ -106,21 +107,19 @@ class NotificationsPostLikeTableViewCell: UITableViewCell {
         
         dateLabel.text = dateString
         
-        postImageView.image = UIImage(named: "test")
+        postImageView.image = UIImage(named: "imageDuaLipa")
         
         postID = model.identifier
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
     
     @objc
     private func didTapPost() {
         
-        print("did tap post")
-        
         guard let id = postID else {return}
         
-        delegate?.notificationsPostLikeTableViewCellDelegate(self, post: PostModel(identifier: id, user: UserModel(username: "kanye", profilePicURL: nil, identifier: UUID().uuidString)))
+        delegate?.notificationsPostLikeTableViewCellDelegate(self, post: PostModel(identifier: id, user: UserModel(username: "duaLipa", profilePicURL: nil, identifier: UUID().uuidString)))
     }
     
 

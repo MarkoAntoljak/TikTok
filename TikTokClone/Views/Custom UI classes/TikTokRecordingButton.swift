@@ -14,15 +14,15 @@ enum ButtonState {
     case notRecording
 }
 
+/// custom button class used for recording button
 class TikTokRecordingButton: UIButton {
-
-    
-    // MARK: Attributes
-        
     
     // MARK: Init
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        
+        // styling
         backgroundColor = nil
         layer.masksToBounds = true
         layer.borderWidth = 5
@@ -40,14 +40,18 @@ class TikTokRecordingButton: UIButton {
     }
     
     // MARK: Functions
+    
     func toggle(for state: ButtonState) {
         
         switch state {
         
         case .recording:
+            
             backgroundColor = .systemRed
             layer.borderColor = nil
+            
         case .notRecording:
+            
             backgroundColor = nil
             layer.borderColor = UIColor.white.cgColor
         }

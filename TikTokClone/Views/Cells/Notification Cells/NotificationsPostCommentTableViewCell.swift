@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// delegate for notification post comment cell
 protocol NotificationsPostCommentTableViewCellDelegate: AnyObject {
     
     func notificationsPostCommentTableViewCellDelegate(_ cell: NotificationsPostCommentTableViewCell, post: PostModel)
@@ -15,7 +16,6 @@ protocol NotificationsPostCommentTableViewCellDelegate: AnyObject {
 
 class NotificationsPostCommentTableViewCell: UITableViewCell {
 
-    
     // MARK: Attributes
     
     static let identifier = "NotificationsPostCommentTableViewCell"
@@ -38,6 +38,7 @@ class NotificationsPostCommentTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .label
+        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
@@ -76,12 +77,15 @@ class NotificationsPostCommentTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        // text label
         label.sizeToFit()
         label.frame = CGRect(x: 20, y: 10, width: label.width, height: label.height)
         
+        // date label
         dateLabel.sizeToFit()
         dateLabel.frame = CGRect(x: 20, y: label.bottom + 10, width: dateLabel.width, height: dateLabel.height)
         
+        // post image
         postImageView.frame = CGRect(x: contentView.right - 70, y: 0, width: 50, height: 50)
         postImageView.center.y = contentView.center.y
         postImageView.layer.cornerRadius = 10
@@ -98,6 +102,7 @@ class NotificationsPostCommentTableViewCell: UITableViewCell {
     
     
     // MARK: Functions
+    
     func configure(postFileName: String, model: NotificationModel) {
         
         label.text = model.text
@@ -106,21 +111,19 @@ class NotificationsPostCommentTableViewCell: UITableViewCell {
         
         dateLabel.text = dateString
         
-        postImageView.image = UIImage(named: "test")
+        postImageView.image = UIImage(named: "imageTravis")
         
         postID = model.identifier
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
     
     @objc
     private func didTapPost() {
         
-        print("did tap post")
-        
         guard let id = postID else {return}
         
-        delegate?.notificationsPostCommentTableViewCellDelegate(self, post: PostModel(identifier: id, user: UserModel(username: "kanye", profilePicURL: nil, identifier: UUID().uuidString)))
+        delegate?.notificationsPostCommentTableViewCellDelegate(self, post: PostModel(identifier: id, user: UserModel(username: "travisssss", profilePicURL: nil, identifier: UUID().uuidString)))
         
     }
 

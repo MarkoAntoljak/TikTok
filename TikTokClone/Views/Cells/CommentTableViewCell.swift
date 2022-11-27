@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CommentTableViewCell: UITableViewCell {
 
@@ -18,8 +19,9 @@ class CommentTableViewCell: UITableViewCell {
     private lazy var profileImg: UIImageView = {
         let imageview = UIImageView()
         imageview.clipsToBounds = true
-        imageview.layer.cornerRadius = imageview.frame.width / 2
+        imageview.contentMode = .scaleAspectFill
         imageview.layer.masksToBounds = true
+        imageview.layer.cornerRadius = imageview.width / 2
         imageview.tintColor = .lightGray
         return imageview
     }()
@@ -122,26 +124,13 @@ class CommentTableViewCell: UITableViewCell {
         
         usernameLabel.text = model.user.username
         
+        profileImg.image = UIImage(named: "imageTravis")
+        
         // format date into string
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm E, d MMM y"
         dateLabel.text = formatter.string(from: model.date)
-        
-        
-        if let url = model.user.profilePicURL {
-            
-            print(url)
-            
-        } else {
-            
-            profileImg.image = UIImage(systemName: "person.circle")
-        }
     
-        
     }
-    
-
-
-
 
 }

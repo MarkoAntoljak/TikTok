@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// delegate for notification user follow cell
 protocol NotificationsUserFollowTableViewCellDelegate: AnyObject {
     
     func notificationsUserFollowTableViewCellDelegate(_ cell: NotificationsUserFollowTableViewCell, didTapFollowFor username: String)
@@ -15,7 +16,6 @@ protocol NotificationsUserFollowTableViewCellDelegate: AnyObject {
 }
 
 class NotificationsUserFollowTableViewCell: UITableViewCell {
-
     
     // MARK: Attributes
     
@@ -41,6 +41,7 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .label
+        label.font = .systemFont(ofSize: 14)
         return label
     }()
     
@@ -94,16 +95,20 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        // profile picture
         profileAvatar.frame = CGRect(x: 20, y: 0, width: 40, height: 40)
         profileAvatar.center.y = contentView.center.y
         profileAvatar.layer.cornerRadius = profileAvatar.height / 2
         
+        // text label
         label.sizeToFit()
-        label.frame = CGRect(x: profileAvatar.right + 20, y: label.height - 10, width: label.width, height: label.height)
+        label.frame = CGRect(x: profileAvatar.right + 10, y: label.height, width: label.width, height: label.height)
         
+        // date label
         dateLabel.sizeToFit()
-        dateLabel.frame = CGRect(x: profileAvatar.right + 20, y: profileAvatar.bottom - dateLabel.height, width: dateLabel.width, height: dateLabel.height)
+        dateLabel.frame = CGRect(x: profileAvatar.right + 10, y: profileAvatar.bottom - dateLabel.height, width: dateLabel.width, height: dateLabel.height)
         
+        // btn follow/unfollow
         btnFollow.sizeToFit()
         btnFollow.frame = CGRect(x: contentView.right - btnFollow.width - 50, y: 0, width: btnFollow.width + 40, height: btnFollow.height)
         btnFollow.center.y = contentView.center.y
@@ -133,14 +138,15 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
         
         label.text = model.text
         
-        profileAvatar.image = UIImage(named: "test")
+        profileAvatar.image = UIImage(named: "imageKim")
         
         let dateString = DateFormatter.localizedString(from: model.date, dateStyle: .medium, timeStyle: .short)
         dateLabel.text = dateString
         
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
+    
     @objc
     private func didTapFollow() {
     
@@ -148,6 +154,7 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
         
         delegate?.notificationsUserFollowTableViewCellDelegate(self, didTapFollowFor: username)
         
+        // change button from follow to unfollow, vice versa
         if isFollowing {
            
             btnFollow.setTitle("Follow", for: .normal)

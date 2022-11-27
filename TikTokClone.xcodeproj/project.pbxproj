@@ -18,6 +18,10 @@
 		9D2F85E2292BFEFE0044E735 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85E1292BFEFD0044E735 /* ProfileHeaderViewModel.swift */; };
 		9DB81218293115E400081245 /* ProfilePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */; };
 		9DB8121C29324BF400081245 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8121B29324BF400081245 /* EditProfileViewController.swift */; };
+		9DB8121F29336E8F00081245 /* ExploreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8121E29336E8F00081245 /* ExploreResponse.swift */; };
+		9DB8122129336EA900081245 /* FeaturedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8122029336EA900081245 /* FeaturedModel.swift */; };
+		9DB8122429336EDD00081245 /* CreatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8122329336EDD00081245 /* CreatorModel.swift */; };
+		9DB8122629336F1600081245 /* HashtagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8122529336F1600081245 /* HashtagModel.swift */; };
 		9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */; };
 		9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */; };
 		9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */; };
@@ -68,6 +72,10 @@
 		9D2F85E1292BFEFD0044E735 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB8121B29324BF400081245 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		9DB8121E29336E8F00081245 /* ExploreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreResponse.swift; sourceTree = "<group>"; };
+		9DB8122029336EA900081245 /* FeaturedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedModel.swift; sourceTree = "<group>"; };
+		9DB8122329336EDD00081245 /* CreatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorModel.swift; sourceTree = "<group>"; };
+		9DB8122529336F1600081245 /* HashtagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagModel.swift; sourceTree = "<group>"; };
 		9DC2B718291EB8D700FEB49B /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,14 +155,6 @@
 			path = "Explore Cells";
 			sourceTree = "<group>";
 		};
-		9D2F85D6292ACDB20044E735 /* Comment Cells */ = {
-			isa = PBXGroup;
-			children = (
-				9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */,
-			);
-			path = "Comment Cells";
-			sourceTree = "<group>";
-		};
 		9D2F85D7292ACDBE0044E735 /* Notification Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,12 +173,16 @@
 			path = "Profile Header";
 			sourceTree = "<group>";
 		};
-		9DB81216293115C700081245 /* Profile Cells */ = {
+		9DB8122229336EAF00081245 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */,
+				9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */,
+				9DB8121E29336E8F00081245 /* ExploreResponse.swift */,
+				9DB8122329336EDD00081245 /* CreatorModel.swift */,
+				9DB8122529336F1600081245 /* HashtagModel.swift */,
+				9DB8122029336EA900081245 /* FeaturedModel.swift */,
 			);
-			path = "Profile Cells";
+			path = Explore;
 			sourceTree = "<group>";
 		};
 		9DC2B70F291EB8D700FEB49B = {
@@ -202,9 +206,9 @@
 		9DC2B71A291EB8D700FEB49B /* TikTokClone */ = {
 			isa = PBXGroup;
 			children = (
+				9DC2B734291EBDC900FEB49B /* Managers */,
 				9DC2B75E291EF28200FEB49B /* Models */,
 				9DC2B733291EBDC600FEB49B /* ViewModels */,
-				9DC2B734291EBDC900FEB49B /* Managers */,
 				9DC2B732291EBDC400FEB49B /* Views */,
 				9DC2B731291EBDC100FEB49B /* Controllers */,
 				9DC2B72F291EBD7E00FEB49B /* Resources */,
@@ -250,7 +254,7 @@
 		9DC2B733291EBDC600FEB49B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */,
+				9DB8122229336EAF00081245 /* Explore */,
 				9D2F85E1292BFEFD0044E735 /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModels;
@@ -313,10 +317,10 @@
 		9DC2B75E291EF28200FEB49B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9DC2B75F291EF29400FEB49B /* PostModel.swift */,
-				9DC2B7632921892300FEB49B /* CommentModel.swift */,
 				9DC2B7652921898C00FEB49B /* UserModel.swift */,
+				9DC2B75F291EF29400FEB49B /* PostModel.swift */,
 				9DC2B7742922D1DF00FEB49B /* ExploreSectionModel.swift */,
+				9DC2B7632921892300FEB49B /* CommentModel.swift */,
 				9D2F85D2292AC8A80044E735 /* NotificationModel.swift */,
 			);
 			path = Models;
@@ -325,9 +329,9 @@
 		9DC2B76729218ED100FEB49B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9DB81216293115C700081245 /* Profile Cells */,
+				9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */,
+				9DC2B76829218EF900FEB49B /* CommentTableViewCell.swift */,
 				9D2F85D7292ACDBE0044E735 /* Notification Cells */,
-				9D2F85D6292ACDB20044E735 /* Comment Cells */,
 				9D2F85D4292ACDA50044E735 /* Explore Cells */,
 			);
 			path = Cells;
@@ -556,9 +560,12 @@
 				9DC2B7752922D1DF00FEB49B /* ExploreSectionModel.swift in Sources */,
 				9DC2B7662921898C00FEB49B /* UserModel.swift in Sources */,
 				9D2F85D1292983830044E735 /* RecordingCaptionViewController.swift in Sources */,
+				9DB8122129336EA900081245 /* FeaturedModel.swift in Sources */,
 				9DB81218293115E400081245 /* ProfilePostCollectionViewCell.swift in Sources */,
 				9DC2B753291EBFA300FEB49B /* AuthManager.swift in Sources */,
+				9DB8122629336F1600081245 /* HashtagModel.swift in Sources */,
 				9D2F85DB292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift in Sources */,
+				9DB8122429336EDD00081245 /* CreatorModel.swift in Sources */,
 				9DC2B749291EBF0800FEB49B /* TabBarViewController.swift in Sources */,
 				9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */,
 				9DC2B745291EBEC600FEB49B /* SignUpViewController.swift in Sources */,
@@ -566,6 +573,7 @@
 				9D2F85E0292BF7B50044E735 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				9DC2B73D291EBE9400FEB49B /* NotificationsViewController.swift in Sources */,
 				9DC2B743291EBEC000FEB49B /* SignInViewController.swift in Sources */,
+				9DB8121F29336E8F00081245 /* ExploreResponse.swift in Sources */,
 				9D2F85E2292BFEFE0044E735 /* ProfileHeaderViewModel.swift in Sources */,
 				9DC2B73F291EBE9C00FEB49B /* ProfileViewController.swift in Sources */,
 				9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */,

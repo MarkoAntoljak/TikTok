@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 
+/// delegate for handling button actions
 protocol ProfileHeaderCollectionReusableViewDelegate: AnyObject {
     
     func profileHeaderCollectionReusableViewDelegate(_ header: ProfileHeaderCollectionReusableView, didTapPrimaryButton viewModel: ProfileHeaderViewModel)
@@ -20,7 +21,7 @@ protocol ProfileHeaderCollectionReusableViewDelegate: AnyObject {
     
 }
 
-
+/// Header for profile collection view
 class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         
     // MARK: Attributes
@@ -85,6 +86,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        // view configuration
         clipsToBounds = true
         backgroundColor = .systemBackground
     
@@ -99,7 +101,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         followingButton.addTarget(self, action: #selector(didTapFollowing), for: .touchUpInside)
         followersButton.addTarget(self, action: #selector(didTapFollowers), for: .touchUpInside)
         
-        // add tap gesture on imageview
+        // add tap gesture on profile image
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfileAvatar))
         profileImage.addGestureRecognizer(tap)
     }
@@ -119,10 +121,11 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         profileImage.layer.cornerRadius = profileImage.height / 2
         
         
-        // following/followers buttons
+        // following/followers count buttons
         followersButton.frame = CGRect(x: 85, y: profileImage.bottom + 20, width: 100, height: 50)
         followingButton.frame = CGRect(x: followersButton.right + 20, y: profileImage.bottom + 20, width: 100, height: 50)
         
+        // edit profile or follow button
         primaryButton.sizeToFit()
         primaryButton.frame = CGRect(x: 0, y: followingButton.bottom + 20, width: primaryButton.width + 100, height: primaryButton.height + 10)
         primaryButton.center.x = self.center.x
@@ -130,6 +133,9 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     // MARK: Functions
+    
+    /// Configuring each cell with data
+    /// - Parameter viewModel: data to configure
     public func configure(with viewModel: ProfileHeaderViewModel) {
         
         self.viewModel = viewModel
@@ -138,6 +144,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         followingButton.setTitle("Following\n\(viewModel.followingCount)", for: .normal)
         followersButton.setTitle("Followers\n\(viewModel.followersCount)", for: .normal)
         
+        // profile image
         if let profileImageURL = viewModel.profileImageURL {
             
             profileImage.sd_setImage(with: profileImageURL)
@@ -147,27 +154,47 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
             profileImage.image = UIImage(systemName: "person.circle")
         }
         
-        if let isFollowing = viewModel.isFollowing {
+        // Handle follow/unfollow button
+        DispatchQueue.main.async {
             
-            primaryButton.backgroundColor = isFollowing ? .secondarySystemBackground : .systemPink
-            primaryButton.setTitle(isFollowing ? "Unfollow" : "Follow", for: .normal)
-            
-        } else {
-            // show edit profile
-            primaryButton.backgroundColor = .secondarySystemBackground
-            primaryButton.setTitle("Edit Profile", for: .normal)
-        
+            if let isFollowing = viewModel.isFollowing {
+                
+                if isFollowing {
+                    
+                    print("unfollow")
+                    
+                    // unfollow
+                    self.primaryButton.setTitle("Unfollow", for: .normal)
+                    self.primaryButton.backgroundColor = .secondarySystemBackground
+                    
+                } else {
+                    
+                    print("follow")
+                    
+                    // follow
+                    self.primaryButton.setTitle("Follow", for: .normal)
+                    self.primaryButton.backgroundColor = .systemPink
+                }
+                
+            } else {
+                
+                // show edit profile
+                self.primaryButton.backgroundColor = .secondarySystemBackground
+                self.primaryButton.setTitle("Edit Profile", for: .normal)
+                
+            }
         }
         
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
     @objc
     private func didTapPrimary() {
         
         guard let viewModel = viewModel else {return}
         
         delegate?.profileHeaderCollectionReusableViewDelegate(self, didTapPrimaryButton: viewModel)
+        
     }
     
     @objc
@@ -176,6 +203,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         guard let viewModel = viewModel else {return}
         
         delegate?.profileHeaderCollectionReusableViewDelegate(self, didTapFollowersButton: viewModel)
+        
     }
     
     @objc
@@ -184,6 +212,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         guard let viewModel = viewModel else {return}
         
         delegate?.profileHeaderCollectionReusableViewDelegate(self, didTapFollowingButton: viewModel)
+        
     }
     
     @objc

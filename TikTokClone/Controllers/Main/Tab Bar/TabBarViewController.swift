@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 
+
+/// class for handling tab bar items and main view controllers
 class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {

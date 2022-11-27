@@ -7,12 +7,13 @@
 
 import UIKit
 
-// custom textfield cell used on sign in and sign up
+/// custom textfield cell used on sign in and sign up
 class TikTokTextField: UITextField {
 
     // MARK: Init
+    
     init() {
-        
+    
         super.init(frame: .zero)
         
         // styling

@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 
+/// video camera view controller
 class CameraViewController: UIViewController {
     
     // MARK: Attributes
@@ -15,16 +16,12 @@ class CameraViewController: UIViewController {
     // av foundation, for setting up video view
     // capture session
     private lazy var captureSession = AVCaptureSession()
-    
     // capture device
     private var captureVideoDevice: AVCaptureDevice?
-    
     // capture output
     private lazy var captureOutput = AVCaptureMovieFileOutput()
-    
     // capture layer
     private var previewLayer: AVCaptureVideoPreviewLayer?
-    
     // video preview layer
     private var previewPlayerLayer: AVPlayerLayer?
     
@@ -40,7 +37,6 @@ class CameraViewController: UIViewController {
     }()
     
     private lazy var btnRecord = TikTokRecordingButton(frame: .zero)
-
     
     // MARK: Lifecycle
     
@@ -107,8 +103,7 @@ class CameraViewController: UIViewController {
     }
     
     private func setUpCamera() {
-        
-        
+    
         // add devices
         
         // microphone
@@ -160,7 +155,7 @@ class CameraViewController: UIViewController {
     
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
     
     @objc
     private func didTapClose() {
@@ -180,9 +175,9 @@ class CameraViewController: UIViewController {
             tabBarController?.tabBar.isHidden = false
             
         }
-        
     }
     
+    // recording
     @objc
     private func didTapRecord() {
         
@@ -203,6 +198,7 @@ class CameraViewController: UIViewController {
         }
     }
     
+    
     @objc
     private func didTapNext() {
         
@@ -222,6 +218,8 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
     
+    
+    // finished recording
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         
         guard error == nil else {

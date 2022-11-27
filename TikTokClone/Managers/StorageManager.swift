@@ -8,24 +8,27 @@
 import Foundation
 import FirebaseStorage
 
+
+/// Manager responsible for stroing and fetching data in Firebase Storage
 final class StorageManager {
     
+    // MARK: Attributes
+    /// singleton
     public static let shared = StorageManager()
-    
+    /// object init
     private let storage = Storage.storage().reference()
     
     private init() {}
     
     // MARK: Functions
     
-    // downloading videos from storage
-    public func downloadVideoURL(with identifier: String, completion: @escaping (URL) -> Void) {
-        
-        
-    }
     
-    
-    // uploading videos to storage
+    /// Uploading video to storage
+    /// - Parameters:
+    ///   - url: video post url
+    ///   - fileName: video post file name
+    ///   - caption: caption of the video post
+    ///   - completion: completion handler that sends back boolean of success
     public func uploadVideoURL(from url: URL, fileName: String, caption: String, completion: @escaping (Bool) -> Void) {
         
         guard let username = UserDefaults.standard.string(forKey: "username") else {return}
@@ -37,6 +40,9 @@ final class StorageManager {
         }
     }
     
+    
+    /// Generating random video name
+    /// - Returns: random generated video name based on specific id, username and current date
     public func generateVideoName() -> String {
         
         guard let username = UserDefaults.standard.string(forKey: "username") else {return ""}
@@ -49,6 +55,10 @@ final class StorageManager {
     }
     
     
+    /// Uploading profile picture to storage
+    /// - Parameters:
+    ///   - image: profile picture image
+    ///   - completion: completion handler that sends back url or error
     public func uploadProfilePicture(image: UIImage, completion: @escaping (Result<URL,Error>) -> Void) {
         
         guard let username = UserDefaults.standard.string(forKey: "username") else {return}
@@ -66,7 +76,7 @@ final class StorageManager {
                     guard let url = url else {
                         
                         if let error = error {
-                            print("error while unwraping url")
+
                             completion(.failure(error))
                         }
                         
@@ -78,10 +88,12 @@ final class StorageManager {
                 }
             } else {
                 
-                print("cannot upload image data to storage")
+                print("Error: Cannot upload image to storage.")
                 
                 if let error = error {
+                    
                     completion(.failure(error))
+                    
                 }
             }
             
@@ -89,10 +101,14 @@ final class StorageManager {
         
     }
     
+    
+    /// Download video post url from storage
+    /// - Parameters:
+    ///   - post: video post model
+    ///   - completion: completion handler that sends back url or error
     func getVideoDownloadURL(for post: PostModel, completion: @escaping (Result<URL, Error>) -> Void) {
         
         storage.child(post.videoURLPath).downloadURL { resultUrl, error in
-            
             
             if let url = resultUrl {
                 

@@ -17,13 +17,15 @@ struct CommentModel: Codable {
     
     let date: Date
     
+    /// Generating mock comments
+    /// - Returns: array of comment models
     static func mockComments() -> [CommentModel] {
         
-        let user = UserModel(username: "noUser", profilePicURL: nil, identifier: "noUser")
+        let user = UserModel(username: "travisssss", profilePicURL: nil, identifier: UUID().uuidString)
         
         var array = [CommentModel]()
         
-        let text = ["Good", "Great", "Awesome","Gud", "Gid", "Alright"]
+        let text = ["I like your style!"]
         
         for comment in text {
             

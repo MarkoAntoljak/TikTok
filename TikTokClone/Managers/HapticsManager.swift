@@ -8,30 +8,21 @@
 import Foundation
 import UIKit
 
+
+/// Manager for vibrate haptics
 final class HapticsManager {
     
     // MARK: Attributes
-    
+    /// singleton
     public static let shared = HapticsManager()
     
     private init() {}
     
     // MARK: Functions
     
-    public func vibrateForSelection() {
-        
-        DispatchQueue.main.async {
-            
-            let generator = UISelectionFeedbackGenerator()
-            generator.prepare()
-            generator.selectionChanged()
-            
-        }
-        
-    }
     
-    // vibrate feedback  success, warning and error
-    
+    /// Vibrating for error or success
+    /// - Parameter type: type of vibrate
     public func vibrate(for type: UINotificationFeedbackGenerator.FeedbackType) {
         
         DispatchQueue.main.async {

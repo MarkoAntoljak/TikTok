@@ -19,9 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // configure Firebase into App
         FirebaseApp.configure()
         
-        // keyboard manager init
+        // enable keyboard manager
         let keyboardManager = IQKeyboardManager.shared
-        
         keyboardManager.enable = true
 
         return true

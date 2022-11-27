@@ -8,14 +8,15 @@
 import UIKit
 import ProgressHUD
 
+/// recorded video caption view controller
 class RecordingCaptionViewController: UIViewController {
-    
     
     // MARK: Attributes
     
     let videoURL: URL
     
     // MARK: UI Elements
+    
     private lazy var textField: UITextView = {
         let field = UITextView()
         field.backgroundColor = .darkGray
@@ -27,8 +28,8 @@ class RecordingCaptionViewController: UIViewController {
         return field
     }()
     
-    
     // MARK: Init
+    
     init(videoURL: URL) {
         
         self.videoURL = videoURL
@@ -67,7 +68,7 @@ class RecordingCaptionViewController: UIViewController {
         
     }
     
-    // MARK: Actions
+    // MARK: Button Actions
     
     @objc
     private func didTapPost() {
@@ -126,17 +127,18 @@ class RecordingCaptionViewController: UIViewController {
         }
         
     }
-    
-    
-    
-    
 }
 
 // MARK: UITextViewDelegate
+
 extension RecordingCaptionViewController: UITextViewDelegate {
     
+    // reseting the placeholder text when editing
     func textViewDidBeginEditing(_ textView: UITextView) {
+        
         textView.text = nil
+        
     }
+    
 }
 

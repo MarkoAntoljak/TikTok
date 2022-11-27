@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import ProgressHUD
 
+/// registering the user view controller
 class SignUpViewController: UIViewController {
     
     // MARK: Attributes
@@ -57,10 +58,7 @@ class SignUpViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         return button
     }()
-    
-    
-    
-    
+
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -85,9 +83,8 @@ class SignUpViewController: UIViewController {
     }
     
     
-    
     // MARK: Functions
-    
+
     private func addSubviews() {
         
         view.addSubview(tfUsername)
@@ -98,13 +95,11 @@ class SignUpViewController: UIViewController {
         
     }
     
-    
     private func addActions() {
         
         btnSignUp.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
         btnSignIn.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
     }
-    
     
     private func setFrames() {
         
@@ -173,9 +168,7 @@ class SignUpViewController: UIViewController {
 
                 alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
                 self.present(alert, animated: true)
-                
             }
-    
             return
         }
         
@@ -197,19 +190,14 @@ class SignUpViewController: UIViewController {
                         self?.navigationController?.popViewController(animated: true)
                         self?.completion?()
                 }
-                
             } else {
                 
                 // show error to the user - Firebase Auth
                 ProgressHUD.showError("Error")
                 return
             }
-            
-            
         }
     }
-    
-    
 }
 
 // MARK: UITextFieldDelegate

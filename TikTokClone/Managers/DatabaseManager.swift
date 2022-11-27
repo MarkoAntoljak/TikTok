@@ -8,12 +8,13 @@
 import Foundation
 import FirebaseFirestore
 
+/// Manager responsible for fetching and storing data in Cloud Firestore
 final class DatabaseManager {
     
     // MARK: Attributes
-    
+    /// singleton
     public static let shared = DatabaseManager()
-    
+    /// database init
     private let database = Firestore.firestore()
     
     // MARK: Init
@@ -22,13 +23,18 @@ final class DatabaseManager {
     
     // MARK: Functions
     
-    // getting username of user who signs in
+    
+    /// Getting the username of the current user who signs in
+    /// - Parameters:
+    ///   - email: email of the user
+    ///   - completion: completion handler sends back string (username)
     public func getUsername(email: String, completion: @escaping (String) -> Void) {
         
         database.collection("users").getDocuments { snapshot, error in
             
             // if there is no user uploaded yet
             guard let snapshot = snapshot else {
+                
                 completion("")
                 return
             }
@@ -50,9 +56,16 @@ final class DatabaseManager {
         }
     }
     
-    // add user to the database
+    
+    /// Add user to the database
+    /// - Parameters:
+    ///   - username: username of the user
+    ///   - email: email of the user
+    ///   - password: passsword of the user
+    ///   - completion: completion handler sends back boolean of success
     public func insertUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         
+        // initial user data that goes into the database
         let userData: [String : Any] = [
             "username" : username,
             "email" : email,
@@ -68,7 +81,12 @@ final class DatabaseManager {
         
     }
     
-    // add post to the database
+    
+    /// Add video post to the database, with caption and string URL
+    /// - Parameters:
+    ///   - fileName: string URL file name of the video
+    ///   - caption: caption of the video
+    ///   - completion: completion handler that sends back boolean of success
     public func insertVideo(fileName: String, caption: String, completion: @escaping (Bool) -> Void) {
         
         guard let username = UserDefaults.standard.string(forKey: "username") else {
@@ -77,35 +95,43 @@ final class DatabaseManager {
         
         let data: [String: Any] = ["caption" : caption, "postURL" : fileName]
         
-        database.collection("users").document("\(username.lowercased())").collection("posts").addDocument(data: data)
+        database.collection("users").document("\(username.lowercased())").collection("posts").addDocument(data: data) { error in
+            
+            completion(error == nil)
+        }
         
         
     }
     
-    // fetch activity notifiactions
+    
+    /// Fetching of notifications in activity tab
+    /// - Parameter completion: completion handler that sends back array of notifications
     public func fetchNotifications(completion: @escaping ([NotificationModel]) -> Void) {
         
+        // mock data of notificiations
         let notifications = NotificationModel.mockData()
         
         completion(notifications)
     }
     
-    // remove on slide notifications
+    
+    /// Removing notifications from database
+    /// - Parameters:
+    ///   - notificationID: notification identifier
+    ///   - completion: completion handler sends back boolean of success
     public func removenotification(notificationID: String, completion: @escaping (Bool) -> Void) {
         
         completion(true)
     }
     
-    // following reflect on database
-    public func follow(username: String, completion: @escaping (Bool) -> Void) {
-        
-        completion(true)
-    }
     
-    // getting all posts from user
+    /// Get all posted video posts from current user
+    /// - Parameters:
+    ///   - user: current user model
+    ///   - completion: completion handler that sends back array of posts
     public func getPosts(user: UserModel, completion: @escaping ([PostModel]) -> Void) {
         
-        
+        // path in the database
         let path = database.collection("users").document("\(user.username.lowercased())").collection("posts")
         
         path.getDocuments { snapshot, error in
@@ -123,6 +149,7 @@ final class DatabaseManager {
             
             var models: [PostModel] = []
             
+            // get caption and postURL
             for document in snapshot.documents {
                 
                 let caption = document["caption"] as! String
@@ -140,9 +167,15 @@ final class DatabaseManager {
         }
     }
     
-    // get all followers/ following
+    
+    /// Get all followers and following users of the current user
+    /// - Parameters:
+    ///   - user: current user model
+    ///   - type: type of follow (following or followers)
+    ///   - completion: completion handler that sends back array of followers of following users
     public func getFollows(for user: UserModel, type: UserListViewController.ListType, completion: @escaping ([String]) -> Void) {
         
+        // database path
         let path = database.collection("users").document(user.username.lowercased())
         
         path.getDocument { snapshot, error in
@@ -157,6 +190,7 @@ final class DatabaseManager {
                 return
             }
             
+            // if there are no followers or following users
             guard let document = snapshot.data() else {
                 completion([])
                 return
@@ -164,6 +198,7 @@ final class DatabaseManager {
             
             var follows = [String]()
             
+            // names from all the users
             let followsName = document[type.rawValue] as! [String]
             
             follows.append(contentsOf: followsName)
@@ -174,7 +209,12 @@ final class DatabaseManager {
         
     }
     
-    // check to see if it is current user of else
+    
+    /// Checking to see if the user is current or other, this is used in order to display edit profile or follow/unfollow
+    /// - Parameters:
+    ///   - user: current user model
+    ///   - type: type of follow (follower/following)
+    ///   - completion: completion handler that sends back boolean of success
     public func isValidRelationship(for user: UserModel, type: UserListViewController.ListType, completion: @escaping (Bool) -> Void) {
         
         let path = database.collection("users").document(user.username.lowercased())
@@ -193,6 +233,7 @@ final class DatabaseManager {
                 return
             }
             
+            // if there is no data
             guard let document = snapshot.data() else {
                 completion(false)
                 return
@@ -200,6 +241,7 @@ final class DatabaseManager {
             
             var follows = [String]()
             
+            // getting all names
             let followsName = document[type.rawValue] as! [String]
             
             // make all names lowercased because of string comparison
@@ -214,7 +256,12 @@ final class DatabaseManager {
         }
     }
     
-    // unfollow/follow database tracking
+    
+    /// Updating users follow/unfollow acitivity in the database
+    /// - Parameters:
+    ///   - user: current user model
+    ///   - follow: followed or unfollowed
+    ///   - completion: completion handler that sens back boolean of success
     public func updateRelationship(for user: UserModel, follow: Bool, completion: @escaping (Bool) -> Void) {
         
         guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {return}
@@ -225,7 +272,7 @@ final class DatabaseManager {
         if follow {
             // follow
             
-            // insert into current user's following
+            /// insert into current user's following
             path.getDocument { snapshot, error in
                 
                 let usernameToInsert = user.username.lowercased()
@@ -243,7 +290,7 @@ final class DatabaseManager {
                     
                     followingNames.append(usernameToInsert)
                     
-                    path.setData([
+                    path.updateData([
                         "following" : followingNames
                     ]) { error in
                         completion(error == nil)
@@ -251,7 +298,7 @@ final class DatabaseManager {
                     
                 } else {
                     
-                    path.setData([
+                    path.updateData([
                         "following" : [usernameToInsert]
                     ]) { error in
                         completion(error == nil)
@@ -260,10 +307,10 @@ final class DatabaseManager {
                 
             }
             
-            // insert into target users followers
+            /// insert into target users followers
             path2.getDocument { snapshot, error in
                 
-                let usernameToInsert = currentUsername
+                let usernameToInsert = currentUsername.lowercased()
                 
                 if let error = error {
                     print(error)
@@ -278,7 +325,7 @@ final class DatabaseManager {
                     
                     followingNames.append(usernameToInsert)
                     
-                    path2.setData([
+                    path2.updateData([
                         "followers" : followingNames
                     ]) { error in
                         completion(error == nil)
@@ -286,7 +333,7 @@ final class DatabaseManager {
                     
                 } else {
                     
-                    path2.setData([
+                    path2.updateData([
                         "followers" : [usernameToInsert]
                     ]) { error in
                         completion(error == nil)
@@ -299,7 +346,7 @@ final class DatabaseManager {
         } else {
             // unfollow
             
-            // remove from current user following
+            /// remove from current user's following
             path.getDocument { snapshot, error in
                 
                 let usernameToRemove = user.username.lowercased()
@@ -323,13 +370,14 @@ final class DatabaseManager {
                         completion(error == nil)
                     }
                     
+                    
                 }
             }
             
-            // remove from target users followers
+            /// remove from target users followers
             path2.getDocument { snapshot, error in
                 
-                let usernameToRemove = currentUsername
+                let usernameToRemove = currentUsername.lowercased()
                 
                 if let error = error {
                     print(error)
