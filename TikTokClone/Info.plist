@@ -6,6 +6,8 @@
 	<string>Please allow camera to record a video.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Please allow microphone to record a video.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow access to photo library.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

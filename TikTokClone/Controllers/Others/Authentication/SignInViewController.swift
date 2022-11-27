@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import ProgressHUD
 
 class SignInViewController: UIViewController {
     
@@ -221,21 +222,27 @@ class SignInViewController: UIViewController {
         // try to sign in the user after input validation
         AuthManager.shared.signIn(email: email, password: password) { [weak self] result in
             
+            ProgressHUD.show("Signing in")
+            
             switch result {
                 
-            case .failure(let error):
+            case .failure(_):
                 
-                print(error.localizedDescription)
+                ProgressHUD.showError("Check credidentials")
                 
-                // show the error to the user - Firebase auth
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error", message: "There was a problem signing you in. Please check your email and password.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                    self?.present(alert, animated: true)
-                }
                 return
                 
             case .success(_):
+                
+                UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set(password, forKey: "password")
+                
+                // set username based on database
+                DatabaseManager.shared.getUsername(email: email) { username in
+                    UserDefaults.standard.set(username, forKey: "username")
+                }
+                
+                ProgressHUD.showSuccess("Success")
                 
                 DispatchQueue.main.async {
                 
@@ -243,7 +250,6 @@ class SignInViewController: UIViewController {
                     vc.modalPresentationStyle = .fullScreen
                     self?.dismiss(animated: true)
                     self?.present(vc, animated: true)
-                    
                     
                 }
                 

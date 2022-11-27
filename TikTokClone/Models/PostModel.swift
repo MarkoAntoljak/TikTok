@@ -11,7 +11,11 @@ struct PostModel {
     
     let identifier: String
     
-    let user = UserModel(username: "markoant123", profilePicURL: nil, identifier: UUID().uuidString)
+    let user: UserModel
+    
+    var caption: String = ""
+    
+    var fileName: String = ""
     
     var isLikedByCurrentUser: Bool = false
     
@@ -20,10 +24,15 @@ struct PostModel {
         var posts = [PostModel]()
         
         for _ in 0...100 {
-            let post = PostModel(identifier: UUID().uuidString)
+            let post = PostModel(identifier: "noUser", user: UserModel(username: "user", profilePicURL: nil, identifier: "NoUser"))
             posts.append(post)
         }
         
         return posts
+    }
+    
+    var videoURLPath: String {
+        
+        return "videos/\(user.username)/\(fileName)"
     }
 }

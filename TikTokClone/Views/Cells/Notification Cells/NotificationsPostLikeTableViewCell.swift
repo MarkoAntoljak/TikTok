@@ -120,7 +120,7 @@ class NotificationsPostLikeTableViewCell: UITableViewCell {
         
         guard let id = postID else {return}
         
-        delegate?.notificationsPostLikeTableViewCellDelegate(self, post: PostModel(identifier: id))
+        delegate?.notificationsPostLikeTableViewCellDelegate(self, post: PostModel(identifier: id, user: UserModel(username: "kanye", profilePicURL: nil, identifier: UUID().uuidString)))
     }
     
 

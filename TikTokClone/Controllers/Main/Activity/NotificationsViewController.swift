@@ -51,7 +51,9 @@ class NotificationsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        title = "Notifications"
+        navigationItem.title = "Notifications"
+        
+        tabBarController?.tabBar.backgroundColor = .systemBackground
         
         // add subviews
         view.addSubview(label)
@@ -285,7 +287,7 @@ extension NotificationsViewController: NotificationsPostLikeTableViewCellDelegat
         
         DispatchQueue.main.async {
             
-            let vc = PostViewController(model: PostModel(identifier: post.identifier))
+            let vc = PostViewController(model: PostModel(identifier: post.identifier, user: UserModel(username: "kanye", profilePicURL: nil, identifier: UUID().uuidString)))
             vc.title = post.user.username
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -300,7 +302,7 @@ extension NotificationsViewController: NotificationsPostCommentTableViewCellDele
         
         DispatchQueue.main.async {
             
-            let vc = PostViewController(model: PostModel(identifier: post.identifier))
+            let vc = PostViewController(model: PostModel(identifier: post.identifier, user: UserModel(username: "kanye", profilePicURL: nil, identifier: UUID().uuidString)))
             vc.title = post.user.username
             self.navigationController?.pushViewController(vc, animated: true)
         }

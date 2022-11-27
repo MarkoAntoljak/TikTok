@@ -64,12 +64,7 @@ final class AuthManager {
             // add user to database
             DatabaseManager.shared.insertUser(username: username, email: email, password: password) { success in
                 
-                if success {
-                    print("success to database")
-                    completion(true)
-                } else {
-                    completion(false)
-                }
+                completion(success == true)
             }
         }
         

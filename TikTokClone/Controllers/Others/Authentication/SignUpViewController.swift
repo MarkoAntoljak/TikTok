@@ -185,36 +185,24 @@ class SignUpViewController: UIViewController {
             
             if signedUp {
                 
-                ProgressHUD.dismiss()
+                ProgressHUD.showSuccess("Signed up")
                 
                 UserDefaults.standard.set(username, forKey: "username")
                 UserDefaults.standard.set(email, forKey: "email")
                 UserDefaults.standard.set(password, forKey: "password")
                 
                 DispatchQueue.main.async {
-                    
-                    let alert = UIAlertController(title: "Congrats!", message: "You have been successfully signed up on TikTok.", preferredStyle: .alert)
-
-                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel,handler: { action in
+             
                         // if user signs up successfully show home screen, this is done on the sign in vc
                         self?.navigationController?.popViewController(animated: true)
                         self?.completion?()
-                    }))
-                    self?.present(alert, animated: true)
-                    
                 }
                 
             } else {
                 
-                ProgressHUD.dismiss()
                 // show error to the user - Firebase Auth
-                DispatchQueue.main.async {
-                    
-                    let alert = UIAlertController(title: "Oops...", message: "Wrong input, please check all fields again.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Try again", style: .cancel))
-                    self?.present(alert, animated: true)
-                    return
-                }
+                ProgressHUD.showError("Error")
+                return
             }
             
             

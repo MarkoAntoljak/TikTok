@@ -90,6 +90,7 @@ class RecordingCaptionViewController: UIViewController {
         StorageManager.shared.uploadVideoURL(from: videoURL, fileName: videoName, caption: caption) { [weak self] success in
             
             DatabaseManager.shared.insertVideo(fileName: videoName, caption: caption) { success in
+                
                 if success {
                     print("successfully added to database")
                 } else {
@@ -100,24 +101,19 @@ class RecordingCaptionViewController: UIViewController {
             
             if success {
                 
-                ProgressHUD.dismiss()
+                ProgressHUD.showSuccess("Uploaded")
                 
                 DispatchQueue.main.async {
-                    
-                    let alert = UIAlertController(title: "Success", message: "You've uploaded a video.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                    self?.present(alert, animated: true)
                     
                     // change back to home feed
                     self?.navigationController?.popViewController(animated: true)
                     self?.tabBarController?.selectedIndex = 0
                     self?.tabBarController?.tabBar.isHidden = false
-                    
                 }
                 
             } else {
                 
-                ProgressHUD.dismiss()
+                ProgressHUD.showError("Error")
                 
                 DispatchQueue.main.async {
                     

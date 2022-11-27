@@ -120,7 +120,7 @@ class NotificationsPostCommentTableViewCell: UITableViewCell {
         
         guard let id = postID else {return}
         
-        delegate?.notificationsPostCommentTableViewCellDelegate(self, post: PostModel(identifier: id))
+        delegate?.notificationsPostCommentTableViewCellDelegate(self, post: PostModel(identifier: id, user: UserModel(username: "kanye", profilePicURL: nil, identifier: UUID().uuidString)))
         
     }
 

@@ -91,6 +91,20 @@ class PostViewController: UIViewController {
         return label
     }()
     
+    private lazy var videoView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.tintColor = .label
+        spinner.hidesWhenStopped = true
+        spinner.startAnimating()
+        return spinner
+    }()
     
     // MARK: Init
     
@@ -115,9 +129,9 @@ class PostViewController: UIViewController {
         
         configureVideo()
         
-        let colors: [UIColor] = [.red, .blue]
+        view.backgroundColor = .black
         
-        view.backgroundColor = colors.randomElement()
+        navigationController?.tabBarController?.tabBar.backgroundColor = .systemBackground
         
         profileButton.setBackgroundImage(UIImage(named: "test"), for: .normal)
         
@@ -135,18 +149,26 @@ class PostViewController: UIViewController {
     
     private func addSubviews() {
         
+        videoView.addSubview(spinner)
+        view.addSubview(videoView)
         view.addSubview(likeButton)
         view.addSubview(shareButton)
         view.addSubview(commentButton)
         view.addSubview(heartImage)
         view.addSubview(captionLabel)
         view.addSubview(profileButton)
+        
     }
     
     private func setFrames() {
         
         let size: CGFloat = 40
         let x = CGFloat(view.width - size - 10)
+        
+        videoView.frame = view.bounds
+        
+        spinner.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        spinner.center = view.center
         
         profileButton.frame = CGRect(
             x: x + 1,
@@ -310,37 +332,93 @@ class PostViewController: UIViewController {
     
     private func configureVideo() {
         
-        guard let path = Bundle.main.path(forResource: "testVideo", ofType: "mp4") else {
-            print("cannot find video")
-            return
+        StorageManager.shared.getVideoDownloadURL(for: model) { [weak self] result in
+            
+            // reference counting fix
+            guard let strongSelf = self else {return}
+            
+            DispatchQueue.main.async {
+                
+                strongSelf.spinner.stopAnimating()
+                strongSelf.spinner.removeFromSuperview()
+                
+                switch result {
+                    
+                case .success(let url):
+                    
+                    strongSelf.player = AVPlayer(url: url)
+                    
+                    // displaying video
+                    let playerLayer = AVPlayerLayer(player: strongSelf.player)
+                    
+                    playerLayer.frame = strongSelf.view.bounds
+                    playerLayer.videoGravity = .resizeAspectFill
+                    strongSelf.videoView.layer.addSublayer(playerLayer)
+                    
+                    strongSelf.player?.volume = 0
+                    strongSelf.player?.play()
+                    
+                    // replaying video
+                    strongSelf.isVideoFinished = NotificationCenter.default.addObserver(
+                        forName: .AVPlayerItemDidPlayToEndTime,
+                        object: strongSelf.player?.currentItem, queue: .main, using: { _ in
+                            strongSelf.player?.seek(to: .zero)
+                            strongSelf.player?.play()
+                        })
+                    
+                case .failure(let error):
+                    
+                    print(error.localizedDescription)
+                    
+                    guard let path = Bundle.main.path(forResource: "testVideo", ofType: "mp4") else {
+                        print("cannot find video")
+                        return
+                    }
+                    
+                    // create url to pass into player
+                    let url = URL(fileURLWithPath: path)
+                    
+                    strongSelf.player = AVPlayer(url: url)
+                    
+                    // displaying video
+                    let playerLayer = AVPlayerLayer(player: strongSelf.player)
+                    
+                    playerLayer.frame = strongSelf.view.bounds
+                    playerLayer.videoGravity = .resizeAspectFill
+                    strongSelf.videoView.layer.addSublayer(playerLayer)
+                    
+                    strongSelf.player?.volume = 0
+                    strongSelf.player?.play()
+                    
+                    // replaying video
+                    strongSelf.isVideoFinished = NotificationCenter.default.addObserver(
+                        forName: .AVPlayerItemDidPlayToEndTime,
+                        object: strongSelf.player?.currentItem, queue: .main, using: { _ in
+                            strongSelf.player?.seek(to: .zero)
+                            strongSelf.player?.play()
+                        })
+                }
+            }
         }
-        
-        // create url to pass into player
-        let url = URL(fileURLWithPath: path)
-        player = AVPlayer(url: url)
-        
-        // displaying video
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.videoGravity = .resizeAspectFill
-        playerLayer.frame = view.bounds
-        view.layer.addSublayer(playerLayer)
-        
-        // staring video
-        guard let player = player else {return}
-        
-        player.volume = 0
-        player.play()
-
-        // replaying video
-        isVideoFinished = NotificationCenter.default.addObserver(
-            forName: .AVPlayerItemDidPlayToEndTime,
-            object: player.currentItem, queue: .main, using: { _ in
-                player.seek(to: .zero)
-                player.play()
-            })
-        
         
     }
     
     
 }
+
+// MARK: PostViewControllerDelegate
+
+extension ProfileViewController: PostViewControllerDelegate {
+    
+    func postViewControllerDelegateDidTapProfile(model: PostModel, vc: PostViewController) {
+        
+        DispatchQueue.main.async {
+            
+            let vc = ProfileViewController(user: model.user)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
+}
+

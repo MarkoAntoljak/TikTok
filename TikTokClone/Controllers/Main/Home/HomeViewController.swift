@@ -73,7 +73,6 @@ class HomeViewController: UIViewController {
         
         // view background
         view.backgroundColor = .systemBackground
-        navigationController?.tabBarController?.tabBar.backgroundColor = .black
         
         // set page controllers
         followingPageViewController.didMove(toParent: self)
@@ -83,8 +82,6 @@ class HomeViewController: UIViewController {
         // navigation title
         navigationItem.titleView = control
         control.addTarget(self, action: #selector(didChangeHeader(_:)) , for: .touchUpInside)
-        
-        
         
     }
     

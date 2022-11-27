@@ -14,6 +14,10 @@
 		9D2F85D9292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85D8292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift */; };
 		9D2F85DB292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85DA292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift */; };
 		9D2F85DD292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85DC292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift */; };
+		9D2F85E0292BF7B50044E735 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85DF292BF7B50044E735 /* ProfileHeaderCollectionReusableView.swift */; };
+		9D2F85E2292BFEFE0044E735 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F85E1292BFEFD0044E735 /* ProfileHeaderViewModel.swift */; };
+		9DB81218293115E400081245 /* ProfilePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */; };
+		9DB8121C29324BF400081245 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8121B29324BF400081245 /* EditProfileViewController.swift */; };
 		9DC2B71C291EB8D700FEB49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */; };
 		9DC2B71E291EB8D700FEB49B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */; };
 		9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */; };
@@ -60,6 +64,10 @@
 		9D2F85D8292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPostLikeTableViewCell.swift; sourceTree = "<group>"; };
 		9D2F85DA292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPostCommentTableViewCell.swift; sourceTree = "<group>"; };
 		9D2F85DC292ACDEE0044E735 /* NotificationsUserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUserFollowTableViewCell.swift; sourceTree = "<group>"; };
+		9D2F85DF292BF7B50044E735 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		9D2F85E1292BFEFD0044E735 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DB8121B29324BF400081245 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		9DC2B718291EB8D700FEB49B /* TikTokClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC2B71B291EB8D700FEB49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DC2B71D291EB8D700FEB49B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +165,22 @@
 			path = "Notification Cells";
 			sourceTree = "<group>";
 		};
+		9D2F85DE292BF79E0044E735 /* Profile Header */ = {
+			isa = PBXGroup;
+			children = (
+				9D2F85DF292BF7B50044E735 /* ProfileHeaderCollectionReusableView.swift */,
+			);
+			path = "Profile Header";
+			sourceTree = "<group>";
+		};
+		9DB81216293115C700081245 /* Profile Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9DB81217293115E400081245 /* ProfilePostCollectionViewCell.swift */,
+			);
+			path = "Profile Cells";
+			sourceTree = "<group>";
+		};
 		9DC2B70F291EB8D700FEB49B = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +239,7 @@
 		9DC2B732291EBDC400FEB49B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D2F85DE292BF79E0044E735 /* Profile Header */,
 				9DC2B7952926F26000FEB49B /* Custom UI classes */,
 				9DC2B76729218ED100FEB49B /* Cells */,
 				9DC2B735291EBDE800FEB49B /* LaunchScreen */,
@@ -226,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B7762922D57600FEB49B /* ExploreViewModel.swift */,
+				9D2F85E1292BFEFD0044E735 /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -268,6 +294,8 @@
 			children = (
 				9DC2B7912926BA9D00FEB49B /* Authentication */,
 				9DC2B740291EBEBA00FEB49B /* UserListViewController.swift */,
+				9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */,
+				9DB8121B29324BF400081245 /* EditProfileViewController.swift */,
 				9DC2B7612921805A00FEB49B /* CommentViewController.swift */,
 				9D2F85D0292983830044E735 /* RecordingCaptionViewController.swift */,
 			);
@@ -278,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				9DC2B71F291EB8D700FEB49B /* HomeViewController.swift */,
-				9DC2B74A291EBF3B00FEB49B /* PostViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -298,6 +325,7 @@
 		9DC2B76729218ED100FEB49B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9DB81216293115C700081245 /* Profile Cells */,
 				9D2F85D7292ACDBE0044E735 /* Notification Cells */,
 				9D2F85D6292ACDB20044E735 /* Comment Cells */,
 				9D2F85D4292ACDA50044E735 /* Explore Cells */,
@@ -517,6 +545,7 @@
 				9D2F85CF29296C930044E735 /* TikTokRecordingButton.swift in Sources */,
 				9DC2B76929218EF900FEB49B /* CommentTableViewCell.swift in Sources */,
 				9DC2B739291EBE7D00FEB49B /* ExploreViewController.swift in Sources */,
+				9DB8121C29324BF400081245 /* EditProfileViewController.swift in Sources */,
 				9DC2B7642921892300FEB49B /* CommentModel.swift in Sources */,
 				9DC2B741291EBEBA00FEB49B /* UserListViewController.swift in Sources */,
 				9D2F85D9292ACDD60044E735 /* NotificationsPostLikeTableViewCell.swift in Sources */,
@@ -527,14 +556,17 @@
 				9DC2B7752922D1DF00FEB49B /* ExploreSectionModel.swift in Sources */,
 				9DC2B7662921898C00FEB49B /* UserModel.swift in Sources */,
 				9D2F85D1292983830044E735 /* RecordingCaptionViewController.swift in Sources */,
+				9DB81218293115E400081245 /* ProfilePostCollectionViewCell.swift in Sources */,
 				9DC2B753291EBFA300FEB49B /* AuthManager.swift in Sources */,
 				9D2F85DB292ACDE10044E735 /* NotificationsPostCommentTableViewCell.swift in Sources */,
 				9DC2B749291EBF0800FEB49B /* TabBarViewController.swift in Sources */,
 				9DC2B720291EB8D700FEB49B /* HomeViewController.swift in Sources */,
 				9DC2B745291EBEC600FEB49B /* SignUpViewController.swift in Sources */,
 				9DC2B7852922F74700FEB49B /* ExploreHashtagCollectionViewCell.swift in Sources */,
+				9D2F85E0292BF7B50044E735 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				9DC2B73D291EBE9400FEB49B /* NotificationsViewController.swift in Sources */,
 				9DC2B743291EBEC000FEB49B /* SignInViewController.swift in Sources */,
+				9D2F85E2292BFEFE0044E735 /* ProfileHeaderViewModel.swift in Sources */,
 				9DC2B73F291EBE9C00FEB49B /* ProfileViewController.swift in Sources */,
 				9DC2B74F291EBF7F00FEB49B /* StorageManager.swift in Sources */,
 				9DC2B7772922D57600FEB49B /* ExploreViewModel.swift in Sources */,

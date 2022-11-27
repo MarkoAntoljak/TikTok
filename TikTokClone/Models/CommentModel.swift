@@ -19,7 +19,7 @@ struct CommentModel: Codable {
     
     static func mockComments() -> [CommentModel] {
         
-        let user = UserModel(username: "markoant123", profilePicURL: nil, identifier: UUID().uuidString)
+        let user = UserModel(username: "noUser", profilePicURL: nil, identifier: "noUser")
         
         var array = [CommentModel]()
         
