@@ -423,6 +423,8 @@
 			dependencies = (
 			);
 			name = TikTokClone;
+			packageProductDependencies = (
+			);
 			productName = TikTokClone;
 			productReference = 9DC2B718291EB8D700FEB49B /* TikTokClone.app */;
 			productType = "com.apple.product-type.application";
@@ -451,6 +453,8 @@
 				Base,
 			);
 			mainGroup = 9DC2B70F291EB8D700FEB49B;
+			packageReferences = (
+			);
 			productRefGroup = 9DC2B719291EB8D700FEB49B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

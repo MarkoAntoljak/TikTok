@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 import ProgressHUD
 
 /// registering the user view controller
