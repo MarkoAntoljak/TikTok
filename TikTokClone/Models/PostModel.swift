@@ -27,7 +27,7 @@ struct PostModel {
         var posts = [PostModel]()
         
         for _ in 0...100 {
-            let post = PostModel(identifier: "1234", user: UserModel(username: "kanyeWest", profilePicURL: nil, identifier: UUID().uuidString))
+            let post = PostModel(identifier: "1234", user: UserModel(username: "leila123", profilePicURL: nil, identifier: UUID().uuidString))
             posts.append(post)
         }
         

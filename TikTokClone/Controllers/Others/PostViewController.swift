@@ -370,9 +370,7 @@ class PostViewController: UIViewController {
                             strongSelf.player?.play()
                         })
                     
-                case .failure(let error):
-                    
-                    print(error.localizedDescription)
+                case .failure(_):
                     
                     guard let path = Bundle.main.path(forResource: "testVideo", ofType: "mp4") else {
                         print("cannot find video")

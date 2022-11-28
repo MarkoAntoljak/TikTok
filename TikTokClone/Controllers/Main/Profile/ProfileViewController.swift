@@ -307,9 +307,10 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
                     DispatchQueue.main.async {
                         
                         if success {
-                            print("false")
+    
                             self?.isFollower = false
                             self?.collectionView.reloadData()
+                            
                         }
                     }
                 }
@@ -322,10 +323,9 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
                         
                         if success {
                             
-                            print("true")
-                            
                             self?.isFollower = true
                             self?.collectionView.reloadData()
+                            
                         }
                     }
                 }

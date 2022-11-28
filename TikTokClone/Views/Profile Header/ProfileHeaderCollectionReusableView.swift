@@ -161,15 +161,11 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
                 
                 if isFollowing {
                     
-                    print("unfollow")
-                    
                     // unfollow
                     self.primaryButton.setTitle("Unfollow", for: .normal)
                     self.primaryButton.backgroundColor = .secondarySystemBackground
                     
                 } else {
-                    
-                    print("follow")
                     
                     // follow
                     self.primaryButton.setTitle("Follow", for: .normal)

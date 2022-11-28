@@ -152,8 +152,8 @@ final class DatabaseManager {
             // get caption and postURL
             for document in snapshot.documents {
                 
-                let caption = document["caption"] as! String
-                let postURL = document["postURL"] as! String
+                let caption = document["caption"] as! String // it is forced cast because in the database
+                let postURL = document["postURL"] as! String // it will always be a String
                 
                 var model = PostModel(identifier: UUID().uuidString, user: user)
                 model.fileName = postURL
@@ -161,7 +161,6 @@ final class DatabaseManager {
                 
                 models.append(model)
             }
-            
             
             completion(models)
         }
@@ -264,10 +263,10 @@ final class DatabaseManager {
     ///   - completion: completion handler that sens back boolean of success
     public func updateRelationship(for user: UserModel, follow: Bool, completion: @escaping (Bool) -> Void) {
         
-        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else {return}
+        guard let currentUsername = UserDefaults.standard.string(forKey: "username")?.lowercased() else {return}
         
-        let path = database.collection("users").document(currentUsername.lowercased())
-        let path2 = database.collection("users").document(user.username.lowercased())
+        let path = self.database.collection("users").document(currentUsername)
+        let path2 = self.database.collection("users").document(user.username.lowercased())
         
         if follow {
             // follow
@@ -310,7 +309,7 @@ final class DatabaseManager {
             /// insert into target users followers
             path2.getDocument { snapshot, error in
                 
-                let usernameToInsert = currentUsername.lowercased()
+                let usernameToInsert = currentUsername
                 
                 if let error = error {
                     print(error)
@@ -362,9 +361,9 @@ final class DatabaseManager {
                 
                 if var followingNames = documentData["following"] as? [String] {
                     
-                    followingNames.removeAll(where: {$0 == usernameToRemove})
+                    followingNames.removeAll(where: {$0.lowercased() == usernameToRemove.lowercased()})
                     
-                    path.setData([
+                    path.updateData([
                         "following" : followingNames
                     ]) { error in
                         completion(error == nil)
@@ -377,7 +376,7 @@ final class DatabaseManager {
             /// remove from target users followers
             path2.getDocument { snapshot, error in
                 
-                let usernameToRemove = currentUsername.lowercased()
+                let usernameToRemove = currentUsername
                 
                 if let error = error {
                     print(error)
@@ -390,9 +389,9 @@ final class DatabaseManager {
                 
                 if var followingNames = documentData["followers"] as? [String] {
                     
-                    followingNames.removeAll(where: {$0 == usernameToRemove})
+                    followingNames.removeAll(where: {$0.lowercased() == usernameToRemove.lowercased()})
                     
-                    path2.setData([
+                    path2.updateData([
                         "followers" : followingNames
                     ]) { error in
                         completion(error == nil)
