@@ -10,7 +10,7 @@ import FirebaseStorage
 
 
 /// Manager responsible for stroing and fetching data in Firebase Storage
-final class StorageManager {
+struct StorageManager {
     
     // MARK: Attributes
     /// singleton

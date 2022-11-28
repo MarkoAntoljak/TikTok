@@ -10,7 +10,7 @@ import UIKit
 
 
 /// Manager for vibrate haptics
-final class HapticsManager {
+struct HapticsManager {
     
     // MARK: Attributes
     /// singleton

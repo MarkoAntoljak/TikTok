@@ -10,7 +10,7 @@ import FirebaseAuth
 
 
 /// Manager responsible for User Authentication
-final class AuthManager {
+struct AuthManager {
     
     // MARK: Attributes
     

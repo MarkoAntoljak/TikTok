@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 /// Manager responsible for fetching and storing data in Cloud Firestore
-final class DatabaseManager {
+struct DatabaseManager {
     
     // MARK: Attributes
     /// singleton
