@@ -69,7 +69,7 @@ struct AuthManager {
             }
             
             // add user to database
-            DatabaseManager.shared.insertUser(username: username, email: email, password: password) { success in
+            DatabaseManager.shared.insertUser(username: username, email: email) { success in
                 
                 completion(success == true)
                 

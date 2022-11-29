@@ -63,13 +63,12 @@ struct DatabaseManager {
     ///   - email: email of the user
     ///   - password: passsword of the user
     ///   - completion: completion handler sends back boolean of success
-    public func insertUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
+    public func insertUser(username: String, email: String, completion: @escaping (Bool) -> Void) {
         
         // initial user data that goes into the database
         let userData: [String : Any] = [
             "username" : username,
             "email" : email,
-            "password" : password,
             "followers" : [],
             "following" : []
         ]
